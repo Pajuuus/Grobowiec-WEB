@@ -12,7 +12,6 @@ export class SupabaseService {
     this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
   }
 
-  // Metoda do pobierania danych z tabeli
   async getTableData(tableName: string) {
     const { data, error } = await this.supabase
       .from(tableName)

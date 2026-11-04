@@ -1,7 +1,26 @@
-<p>header-bar works!</p>
+<main>
+  <img id="logo" src="/images/images.jpeg">
+  <nav>
+    <div id="upper">
+      <a><button class="categoryChangeButtons">Miejsce na odwołanie</button></a>
+      <a><button class="categoryChangeButtons">Miejsce na odwołanie</button></a>
+      <a><button class="categoryChangeButtons">Miejsce na odwołanie</button></a>
+    </div>
+    <div id="bottom">
+
+    </div>
+  </nav>
+  <form>
+    <input type="text" placeholder="Wyszukaj produkt">
+    <button type="submit"><img src="/images/images.jpeg"></button>
+  </form>
+  <button id="buildButton">Złóż swój własny pogrzeb!</button>
+  <button id="cartButton"><img src="/images/images.jpeg"></button>
+</main>
+
 @for (item of items; track item.id) {
-        <tr>
-          <td>{{ item.id }}</td>
-          <td>{{ item.name }}</td>
-        </tr>
-      }
+  <tr>
+    <td>{{ item.id }}</td>
+    <td>{{ item.name }}</td>
+  </tr>
+}

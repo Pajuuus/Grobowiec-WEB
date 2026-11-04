@@ -1,0 +1,29 @@
+img {
+  width: 10%;
+}
+* {
+  margin: 0px;
+}
+main {
+  display: flex;
+}
+#logo {
+  height: 100px;
+  width: 10%;
+}
+nav, #upper, #bottom {
+width: 40%;
+display: flex;
+}
+#upper, #bottom {
+  height: 50px;
+}
+form {
+  width: 20%;
+}
+#buildButton {
+  width: 10%;
+}
+#cartButton {
+  width: 10%;
+}
