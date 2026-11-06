@@ -43,7 +43,9 @@ input {
   height: 40px;
   box-sizing: border-box;
   padding: 0px;
-
+}
+button:focus, input:focus {
+  background: #ddddff;
 }
 
 button, input {
@@ -99,10 +101,11 @@ button, input {
       width: 35%;
     }
     #usefullButtons {
-      width: 10%;
+      width: 15%;
+      margin: auto;
     }
     #buildButton {
-      width: 25%;
+      width: 20%;
     }
   }
 
@@ -130,12 +133,49 @@ button, input {
     }
     #buildButton {
       width: 70%;
-      height: 50px;
+      height: 40px;
     }
     #usefullButtons {
+      margin: 0px;
       flex-direction: row;
+      justify-content: space-around;
       height: 50px;
       width: 30%;
+    }
+
+  }
+
+  @media screen and (max-width: 400px) {
+    #usefullButtons {
+      width: 35%;
+    }
+    #buildButton {
+      width: 65%;
+    }
+  }
+
+  @media screen and (max-width: 325px) {
+    #usefullButtons {
+      width: 40%;
+    }
+    #buildButton {
+      width: 60%;
+    }
+  }
+
+  @media screen and (max-width: 250px){
+    #logo, form {
+      width: 100%;
+    }
+    nav {
+      height: 150px;
+    }
+    #upper {
+      flex-direction: column;
+    }
+    #upper button {
+      width: 100%;
+      height: 50px;
     }
 
   }
