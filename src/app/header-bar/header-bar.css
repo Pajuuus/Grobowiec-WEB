@@ -3,27 +3,139 @@ img {
 }
 * {
   margin: 0px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 main {
   display: flex;
+  flex-wrap: wrap;
 }
 #logo {
   height: 100px;
   width: 10%;
 }
-nav, #upper, #bottom {
-width: 40%;
-display: flex;
+nav {
+  width: 50%;
 }
 #upper, #bottom {
   height: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+.categoryChangeButtons {
+  padding: 0 50px;
+  height: 40px;
 }
 form {
   width: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
+form button, form input {
+  width: 90%;
+  height: 40px;
+  margin: auto;
+}
+
+input {
+  width: 90%;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 0px;
+
+}
+
+button, input {
+  border-radius: 10px;
+  border: black 2px solid;
+  color: black;
+  background: #eeeeee;
+}
+
 #buildButton {
-  width: 10%;
+  width: 15%;
+  height: 90px;
 }
-#cartButton {
-  width: 10%;
+#usefullButtons {
+  width: 5%;
+  display: flex;
+  flex-direction: column;
+  height: 100px;
 }
+#usefullButtons button {
+  height: 40px;
+  width: 50px;
+  margin: auto;
+}
+
+
+@media screen and (max-width: 1111px) {
+  nav {
+    flex-basis: 100%;
+    order: 2;
+  }
+
+  #logo {
+    width: 20%;
+  }
+
+  form {
+    width: 50%;
+  }
+  #usefullButtons {
+    width: 10%;
+  }
+  #buildButton {
+    width: 20%;
+  }
+}
+
+@media screen and (max-width: 666px) {
+  #logo {
+    width: 30%;
+  }
+    form {
+      width: 35%;
+    }
+    #usefullButtons {
+      width: 10%;
+    }
+    #buildButton {
+      width: 25%;
+    }
+  }
+
+  @media screen and (max-width: 525px) {
+    .categoryChangeButtons {
+      padding: 5px;
+    }
+    nav {
+      height: 125px;
+    }
+    .categoryChangeButtons {
+      height: 75px;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    nav {
+      order: 2;
+    }
+    #logo {
+      width: 40%;
+    }
+    form {
+      width: 60%;
+    }
+    #buildButton {
+      width: 70%;
+      height: 50px;
+    }
+    #usefullButtons {
+      flex-direction: row;
+      height: 50px;
+      width: 30%;
+    }
+
+  }

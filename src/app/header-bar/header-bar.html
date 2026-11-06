@@ -11,11 +11,14 @@
     </div>
   </nav>
   <form>
-    <input type="text" placeholder="Wyszukaj produkt">
+    <input name="jaj" type="text" placeholder="Wyszukaj produkt">
     <button type="submit"><img src="/images/images.jpeg"></button>
   </form>
   <button id="buildButton">Złóż swój własny pogrzeb!</button>
-  <button id="cartButton"><img src="/images/images.jpeg"></button>
+  <div id="usefullButtons">
+    <button id="cartButton"><img src="/images/images.jpeg"></button>
+    <button id="wishList"><img src="/images/images.jpeg"></button>
+  </div>
 </main>
 
 @for (item of items; track item.id) {
