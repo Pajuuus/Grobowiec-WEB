@@ -6,6 +6,7 @@ img {
   margin-top: auto;
   margin-bottom: auto;
   padding: 0px;
+  font-weight: 1000;
 }
 main {
   display: flex;
@@ -224,5 +225,27 @@ button, input {
   @media screen and (prefers-color-scheme: dark){
       main{
         background-color: black;
+      }
+      input::placeholder {
+        color: #D400FF;
+      }
+      input:focus::placeholder {
+        color: black;
+      }
+      button:focus, input:focus {
+        background:#D400FF;
+        color: black;
+        outline: none;
+      }
+
+      button, input {
+        border-color: #D400FF;
+        color: #D400FF;
+        background: black;
+      }
+
+
+      p {
+        color: #D400FF;
       }
   }
