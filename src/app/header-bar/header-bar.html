@@ -8,7 +8,9 @@
     </div>
     <div id="bottom">
       @if (CategoryView == 1){
-
+        @for (sale of sales(); track sale.id) {
+            <p>{{sale.name}}</p>
+        }
       }
       @if (CategoryView == 2){
         <p>Znicze</p>
