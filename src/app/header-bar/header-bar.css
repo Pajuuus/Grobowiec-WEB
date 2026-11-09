@@ -5,10 +5,14 @@ img {
   margin: 0px;
   margin-top: auto;
   margin-bottom: auto;
+  padding: 0px;
 }
 main {
   display: flex;
   flex-wrap: wrap;
+  background-color: #f5eabc;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 #logo {
   height: 100px;
@@ -23,7 +27,7 @@ nav {
   justify-content: space-around;
 }
 .categoryChangeButtons {
-  padding: 0 50px;
+  width: 222px;
   height: 40px;
 }
 form {
@@ -44,15 +48,23 @@ input {
   box-sizing: border-box;
   padding: 0px;
 }
+input::placeholder {
+  color: #704214;
+}
+input:focus::placeholder {
+  color: #f2e3a6;
+}
 button:focus, input:focus {
-  background: #ddddff;
+  background: #704214;
+  color: #f2e3a6;
+  outline: none;
 }
 
 button, input {
   border-radius: 10px;
-  border: black 2px solid;
-  color: black;
-  background: #eeeeee;
+  border: #704214 3px solid;
+  color: #704214;
+  background: #f2e3a6;
 }
 
 #buildButton {
@@ -72,12 +84,19 @@ button, input {
 }
 
 
+@media screen and (max-width: 1366px) {
+  .categoryChangeButtons {
+    width: 175px;
+  }
+}
 @media screen and (max-width: 1111px) {
   nav {
     flex-basis: 100%;
     order: 2;
   }
-
+  .categoryChangeButtons {
+    width: 275px;
+  }
   #logo {
     width: 20%;
   }
@@ -92,10 +111,22 @@ button, input {
     width: 20%;
   }
 }
-
+@media screen and (max-width: 866px) {
+  .categoryChangeButtons {
+    width: 230px;
+  }
+@media screen and (max-width: 715px){
+  .categoryChangeButtons {
+    width: 200px;
+  }
+}
+}
 @media screen and (max-width: 666px) {
   #logo {
     width: 30%;
+  }
+  .categoryChangeButtons {
+    width: 170px;
   }
     form {
       width: 35%;
@@ -111,19 +142,16 @@ button, input {
 
   @media screen and (max-width: 525px) {
     .categoryChangeButtons {
-      padding: 5px;
-    }
-    nav {
-      height: 125px;
-    }
-    .categoryChangeButtons {
-      height: 75px;
+        width: 140px;
     }
   }
 
   @media screen and (max-width: 450px) {
     nav {
       order: 2;
+    }
+    .categoryChangeButtons {
+      width: 125px;
     }
     #logo {
       width: 40%;
@@ -152,6 +180,9 @@ button, input {
     #buildButton {
       width: 65%;
     }
+  .categoryChangeButtons {
+    width: 100px;
+  }
   }
 
   @media screen and (max-width: 325px) {
@@ -160,6 +191,15 @@ button, input {
     }
     #buildButton {
       width: 60%;
+    }
+    .categoryChangeButtons {
+        width: 90px;
+    }
+  }
+
+  @media screen and (max-width: 280px){
+    .categoryChangeButtons{
+      width: 75px;
     }
   }
 
@@ -178,4 +218,11 @@ button, input {
       height: 50px;
     }
 
+  }
+
+
+  @media screen and (prefers-color-scheme: dark){
+      main{
+        background-color: black;
+      }
   }
