@@ -3,13 +3,27 @@ img {
   height: 350px;
 }
 
-#siurek {
-  margin: -30px 0 0 800px;
+#siurek2 {
+  display: flex;
+  justify-content: center;
+  margin-top: -50px;
+}
+
+nav {
+  height: 40px;
+  width: fit-content;
   background: #eeeeee;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
 }
 
 button {
+  padding: 0 10px;
   background: none;
   border: none;
-  border-radius: 5px;
+}
+
+button:hover {
+  cursor: pointer;
 }
