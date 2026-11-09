@@ -1,0 +1,17 @@
+<p>works!</p>
+
+<div>
+  @for (sale of sales(); track sale.id) {
+    @if (sale.id == active_sale_id) {
+      <img [src]="sale.image_path">
+      }
+  }
+
+  <div id="siurek">
+    @for (sale of sales(); track sale.id) {
+        <button>{{sale.name}}</button>
+    }
+  </div>
+</div>
+
+<p>works!</p>
