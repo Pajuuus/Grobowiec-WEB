@@ -6,13 +6,12 @@ import { SupabaseService } from '../services/supabase';
   selector: 'overwatch4',
   styleUrl: './overwatch4.css',
   templateUrl: './overwatch4.html',
-  standalone: true,
 })
 export class Overwatch4 implements OnInit {
     sales = signal<any[]>([]);
     loading = true;
 
-  active_sale_id = 0;
+    active_sale_id = 0;
 
     constructor(private supabaseService: SupabaseService) {}
 
@@ -25,5 +24,9 @@ export class Overwatch4 implements OnInit {
       } finally {
         this.loading = false;
       }
+    }
+
+    change_image(id = 0) {
+      this.active_sale_id = id;
     }
 }

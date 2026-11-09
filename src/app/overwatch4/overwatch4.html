@@ -1,5 +1,3 @@
-<p>works!</p>
-
 <div>
   @for (sale of sales(); track sale.id) {
     @if (sale.id == active_sale_id) {
@@ -7,11 +5,11 @@
       }
   }
 
-  <div id="siurek">
-    @for (sale of sales(); track sale.id) {
-        <button>{{sale.name}}</button>
-    }
+  <div id="siurek2">
+    <nav>
+      @for (sale of sales(); track sale.id) {
+          <button>{{sale.name}}</button>
+      }
+    </nav>
   </div>
 </div>
-
-<p>works!</p>
