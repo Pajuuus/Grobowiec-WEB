@@ -12,7 +12,7 @@ export class SupabaseService {
     this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
   }
 
-  async getTableData(tableName: string) {
+  public async getTableData(tableName: string) {
     const { data, error } = await this.supabase
       .from(tableName)
       .select('*');
