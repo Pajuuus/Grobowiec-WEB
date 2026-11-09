@@ -2,16 +2,32 @@
   <img id="logo" src="/images/images.jpeg">
   <nav>
     <div id="upper">
-      <a><button class="categoryChangeButtons">Promocje</button></a>
-      <a><button class="categoryChangeButtons">Produkty</button></a>
-      <a><button class="categoryChangeButtons">Usługi</button></a>
+      <a><button class="categoryChangeButtons" (click)="categoryView(1)">Promocje</button></a>
+      <a><button class="categoryChangeButtons" (click)="categoryView(2)">Produkty</button></a>
+      <a><button class="categoryChangeButtons" (click)="categoryView(3)">Usługi</button></a>
     </div>
     <div id="bottom">
+      @if (CategoryView == 1){
 
+      }
+      @if (CategoryView == 2){
+        <p>Znicze</p>
+        <p>Trumny</p>
+        <p>Urny</p>
+        <p>Kwiaty</p>
+        <p>Nagrobki</p>
+      }
+      @if (CategoryView == 3){
+        <p>Pogrzeb</p>
+        <p>Balsamacja</p>
+        <p>Kremacja</p>
+        <p>Promesa</p>
+        <p>Konfigurator Pogrzebów</p>
+      }
     </div>
   </nav>
   <form>
-    <input name="Wyszukiwanie" type="text" placeholder="Wyszukaj produkt">
+    <input name="Wyszukiwanie" type="text" placeholder=" Wyszukaj produkt">
     <button type="submit"><img src="/images/images.jpeg"></button>
   </form>
   <button id="buildButton">Złóż swój własny pogrzeb!</button>
