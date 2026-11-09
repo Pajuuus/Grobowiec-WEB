@@ -3,9 +3,13 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'header-bar',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './header-bar.html',
   styleUrl: './header-bar.css'
 })
-export class HeaderBar {}
+export class HeaderBar {
+  CategoryView = 0;
+  categoryView(x = 0) {
+    this.CategoryView = x;
+  }
+}
