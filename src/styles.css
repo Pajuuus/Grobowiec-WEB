@@ -1,5 +1,11 @@
 * {
+  font-family: "JetBrainsMono-Regular";
   margin: 0;
+}
+
+@font-face {
+  src: url("/fonts/JetBrainsMono-Regular.ttf") format('truetype');
+  font-family: "JetBrainsMono-Regular";
 }
 
 button {

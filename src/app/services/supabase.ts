@@ -24,4 +24,17 @@ export class SupabaseService {
 
     return data;
   }
+
+  public async insertTableData(tableName: string, data: any) {
+    const { error } = await this.supabase
+      .from(tableName)
+      .insert(data);
+
+    if (error) {
+      console.error('Błąd podczas pobierania danych:', error.message);
+      throw error;
+    }
+
+    return data;
+  }
 }
