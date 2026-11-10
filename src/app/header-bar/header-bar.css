@@ -52,10 +52,10 @@ input {
 input::placeholder {
   color: #704214;
 }
-input:focus::placeholder {
+.OtherChangeButtons.active::placeholder {
   color: #f2e3a6;
 }
-button:focus, input:focus {
+.categoryChangeButtons.active, .OtherChangeButtons.active {
   background: #704214;
   color: #f2e3a6;
   outline: none;
@@ -66,6 +66,13 @@ button, input {
   border: #704214 3px solid;
   color: #704214;
   background: #f2e3a6;
+}
+p {
+  color: #704214;
+  cursor: pointer;
+}
+p:hover {
+  animation: animation1 infinite 1s ease-in-out alternate;
 }
 
 #buildButton {
@@ -220,7 +227,8 @@ button, input {
       width: 50%;
     }
     #bottom {
-      width: 150px;
+      height: 150px;
+      width: 100%;
     }
   }
 
@@ -233,10 +241,14 @@ button, input {
     }
     #upper {
       flex-direction: column;
+      height: 150px;
     }
     #upper button {
       width: 100%;
       height: 50px;
+    }
+    nav{
+      height: 300px;
     }
 
   }
@@ -252,7 +264,7 @@ button, input {
       input:focus::placeholder {
         color: black;
       }
-      button:focus, input:focus {
+      .categoryChangeButtons.active, input:focus {
         background:#D400FF;
         color: black;
         outline: none;
@@ -268,4 +280,16 @@ button, input {
       p {
         color: #D400FF;
       }
+  }
+
+
+  @keyframes animation1 {
+    from {
+      color: #704214;
+      font-size: 100%;
+    }
+    to {
+      color: #FF1DCE;
+      font-size: 130%;
+    }
   }
