@@ -1,0 +1,83 @@
+<main>
+  <aside>
+    <header>
+      <nav>
+        <br>
+        <div>
+        <input type="number" placeholder="Min cena">
+        <input type="number" placeholder="Max cena">
+        </div>
+        <button>Zatwierdź</button>
+
+        <br>
+      @if ('znicz' == daneService.zmienna()){
+        <h3>Wkład znicza</h3>
+        <label><input type="checkbox"> oleisty</label>
+        <label><input type="checkbox"> parafinowy</label>
+        <label><input type="checkbox"> elektryczny</label>
+        <label><input type="checkbox"> solarny</label>
+        <br>
+        <h3>Czas do wypalenia</h3>
+        <label><input type="checkbox"> krótki 48h</label>
+        <label><input type="checkbox"> długi 72h</label>
+        <label><input type="checkbox"> całoroczny</label>
+        <label><input type="checkbox"> wielorazowy</label>
+        <br>
+        <h3>Rozmiar</h3>
+        <label><input type="checkbox"> XS</label>
+        <label><input type="checkbox"> S</label>
+        <label><input type="checkbox"> M</label>
+        <label><input type="checkbox"> L</label>
+        <label><input type="checkbox"> XL</label>
+        <label><input type="checkbox"> XXL</label>
+        <label><input type="checkbox"> 3XL</label>
+        <br>
+        <h3>Materiał</h3>
+        <label><input type="checkbox"> szklany</label>
+        <label><input type="checkbox"> plastikowy</label>
+        <label><input type="checkbox"> ceramiczny</label>
+        <label><input type="checkbox"> metalowy</label>
+        <label><input type="checkbox"> kamienny</label>
+        }
+
+      </nav>
+    </header>
+
+  </aside>
+  <article>
+    <header>
+      <div class="up">
+        <h1 class="name" [class.active]="daneService.zmienna() == ''"></h1>
+        <h1 class="name" [class.active]="daneService.zmienna() == 'znicz'">Znicze</h1>
+        <h1 class="name" [class.active]="daneService.zmienna() == 'trumna'">Trumny</h1>
+        <select>
+          <option>Losowo</option>
+          <option>Cena malejąco</option>
+          <option>Cena rosnąco</option>
+        </select>
+      </div>
+      <div class="down">
+      </div>
+    </header>
+    @for (product of products(); track product.id) {
+      @if (product.type == daneService.zmienna()){
+        <div class="product">
+          <img src="/images/images.jpeg">
+          <div class="left">
+            <h3>{{product.name}}</h3>
+            @for (property of product.properties; track property) {
+              <p>{{property}}</p>
+            }
+          </div>
+
+          <div class="right">
+            <h3>{{product.price}}</h3>
+            <button><img src="/images/images.jpeg"></button>
+            <p>{{product.in_stock}}</p>
+          </div>
+        </div>
+
+    }
+  }
+  </article>
+</main>

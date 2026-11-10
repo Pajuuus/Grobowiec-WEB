@@ -13,11 +13,11 @@
         }
       }
       @if (CategoryView == 2){
-        <p>Znicze</p>
-        <p>Trumny</p>
-        <p>Urny</p>
-        <p>Kwiaty</p>
-        <p>Nagrobki</p>
+        <p (click)="wyslij('znicz')">Znicze</p>
+        <p (click)="wyslij('trumna')">Trumny</p>
+        <p (click)="wyslij('urna')">Urny</p>
+        <p (click)="wyslij('kwiaty')">Kwiaty</p>
+        <p (click)="wyslij('nagrobek')">Nagrobki</p>
       }
       @if (CategoryView == 3){
         <p>Pogrzeb</p>
