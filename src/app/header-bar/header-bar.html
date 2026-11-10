@@ -2,9 +2,9 @@
   <img id="logo" src="/images/images.jpeg">
   <nav>
     <div id="upper">
-      <a><button class="categoryChangeButtons" (click)="categoryView(1)">Promocje</button></a>
-      <a><button class="categoryChangeButtons" (click)="categoryView(2)">Produkty</button></a>
-      <a><button class="categoryChangeButtons" (click)="categoryView(3)">Usługi</button></a>
+      <a><button class="categoryChangeButtons" [class.active]="CategoryView == 1" (click)="categoryView(1)">Promocje</button></a>
+      <a><button class="categoryChangeButtons" [class.active]="CategoryView == 2" (click)="categoryView(2)">Produkty</button></a>
+      <a><button class="categoryChangeButtons" [class.active]="CategoryView == 3" (click)="categoryView(3)">Usługi</button></a>
     </div>
     <div id="bottom">
       @if (CategoryView == 1){
@@ -29,10 +29,10 @@
     </div>
   </nav>
   <form>
-    <input name="Wyszukiwanie" type="text" placeholder=" Wyszukaj produkt">
+    <input class="OtherChangeButtons" [class.active]="OtherView == 1" (click)="otherChange(1)" name="Wyszukiwanie" type="text" placeholder=" Wyszukaj produkt">
     <button type="submit"><img src="/images/images.jpeg"></button>
   </form>
-  <button id="buildButton">Złóż swój własny pogrzeb!</button>
+  <button class="OtherChangeButtons" [class.active]="OtherView == 2" (click)="otherChange(2)" id="buildButton">Złóż swój własny pogrzeb!</button>
   <div id="usefullButtons">
     <button id="cartButton"><img src="/images/images.jpeg"></button>
     <button id="wishList"><img src="/images/images.jpeg"></button>

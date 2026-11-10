@@ -9,10 +9,14 @@ import { SupabaseService } from '../services/supabase';
   styleUrl: './header-bar.css'
 })
 export class HeaderBar implements OnInit {
-  CategoryView = 0;
+  CategoryView = 1;
+  OtherView = 0;
 
-  categoryView(x = 0) {
+  categoryView(x = 1) {
     this.CategoryView = x;
+  }
+  otherChange(x = 0) {
+    this.OtherView = x;
   }
 
   sales = signal<any[]>([]);
