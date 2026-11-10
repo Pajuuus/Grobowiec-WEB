@@ -1,15 +1,19 @@
 <div>
   @for (sale of sales(); track sale.id) {
     @if (sale.id == active_sale_id) {
-      <img [src]="sale.image_path">
+      <img id="img" [src]="image_src()">
       }
   }
 
-  <div id="siurek2">
+  <div id="nav">
     <nav>
+      <button id="left_edge" (click)="prev_sale()"><</button>
+
       @for (sale of sales(); track sale.id) {
-          <button>{{sale.name}}</button>
+          <button (click)="change_sale(sale.id)">{{sale.name}}</button>
       }
+
+      <button id="right_edge" (click)="next_sale()">></button>
     </nav>
   </div>
 </div>
