@@ -3,7 +3,7 @@ img {
   height: 350px;
 }
 
-#siurek2 {
+#nav {
   display: flex;
   justify-content: center;
   margin-top: -50px;
@@ -12,18 +12,27 @@ img {
 nav {
   height: 40px;
   width: fit-content;
-  background: #eeeeee;
+  background: #eee;
   border-radius: 8px;
   display: flex;
   justify-content: center;
 }
 
 button {
-  padding: 0 10px;
-  background: none;
+  color: #222222;
+  background: #eee;
   border: none;
+  padding: 0 5px;
 }
 
-button:hover {
-  cursor: pointer;
+#left_edge {
+  padding: 0 10px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+#right_edge {
+  padding: 0 10px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
 }

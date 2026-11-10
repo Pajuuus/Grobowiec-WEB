@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+}
+
+button {
+  transition: all 0.4s ease;
+}
+
+button:hover {
+  cursor: pointer;
+  filter: brightness(0.9);
+}
