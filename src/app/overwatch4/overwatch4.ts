@@ -36,7 +36,7 @@ export class Overwatch4 implements OnInit {
       this.image_src.set(sale.image_path);
     }
 
-    next_sale() {
+    prev_sale() {
       var id = this.active_sale_id + 1;
 
       if (id >= this.sales().length) {
@@ -46,7 +46,7 @@ export class Overwatch4 implements OnInit {
       this.change_sale(id);
     }
 
-    prev_sale() {
+    next_sale() {
       var id = this.active_sale_id - 1;
 
       if (id < 0) {
@@ -54,9 +54,5 @@ export class Overwatch4 implements OnInit {
       }
 
       this.change_sale(id)
-    }
-
-    change_image(id = 0) {
-      this.active_sale_id = id;
     }
 }

@@ -10,7 +10,7 @@
       <button id="left_edge" (click)="prev_sale()"><</button>
 
       @for (sale of sales(); track sale.id) {
-          <button (click)="change_sale(sale.id)">{{sale.name}}</button>
+          <button class="button" [class.active]="sale.id == active_sale_id" (click)="change_sale(sale.id)">{{sale.name}}</button>
       }
 
       <button id="right_edge" (click)="next_sale()">></button>

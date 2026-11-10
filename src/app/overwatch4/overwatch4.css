@@ -36,3 +36,7 @@ button {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
 }
+
+.button.active {
+  filter: brightness(0.9);
+}
