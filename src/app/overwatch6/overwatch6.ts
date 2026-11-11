@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SupabaseService } from '../services/supabase';
 
@@ -8,36 +8,8 @@ import { SupabaseService } from '../services/supabase';
   styleUrl: './overwatch6.css',
   templateUrl: './overwatch6.html',
 })
-export class Overwatch6 implements OnInit {
-  prop_enum = [
-    "wkład oleisty",
-    "wkład elektryczny",
-    "wkład parafinowy",
-    "wkład solarny",
-    "krótko palący 48h",
-    "długo palący 72h",
-    "całoroczny",
-    "wielorazowy",
-    "szklany",
-    "plastikowy",
-    "ceramiczny",
-    "metalowy",
-    "kamienny",
-    "Rozmiar - XS",
-    "Rozmiar - S",
-    "Rozmiar - M",
-    "Rozmiar - L",
-    "Rozmiar - XL",
-    "Rozmiar - XXL",
-    "Rozmiar - 3XL"
-  ];
-  type_enum = [
-    "znicz",
-    "trumna",
-    "urna",
-    "kwiaty",
-    "nagrobek"
-  ];
+export class Overwatch6 {
+  private readonly supabaseService = inject(SupabaseService);
 
   name = "";
   desc = "";
@@ -49,22 +21,16 @@ export class Overwatch6 implements OnInit {
   image = "";
 
   sales = signal<any[]>([]);
-  err_msg = signal("");
+  msg = signal("");
+  msg_type = 0;
 
-  constructor(private supabaseService: SupabaseService) {}
-
-  async ngOnInit() {
-    try {
-      const data = await this.supabaseService.getTableData('Sales');
-      this.sales.set(data);
-    } catch (error) {
-      console.error('Nie udało się załadować danych');
-    }
+  constructor() {
+    this.sales = this.supabaseService.sales;
   }
 
   async send_request() {
     if (this.name == "" || this.type == "" || this.price < 0 || this.in_stock < 0 || this.props.length == 0 || this.image == "") {
-      this.err_msg.set("You messed something up");
+      this.msg.set("You messed something up");
     }
 
     await this.supabaseService.insertTableData("Products", {
@@ -77,5 +43,8 @@ export class Overwatch6 implements OnInit {
       properties: this.props,
       image: this.image
     });
+
+    this.msg_type = 1;
+    this.msg.set("Done!");
   }
 }

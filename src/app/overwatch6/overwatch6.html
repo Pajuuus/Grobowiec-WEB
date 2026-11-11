@@ -1,17 +1,19 @@
 <div>
   <form (ngSubmit)="send_request()">
+    <h2 id="msg" [class.err]="msg_type == 0" [class.suc]="msg_type == 1">{{ msg() }}</h2>
+
     <h2>Dodawanie nowego produkty</h2>
 
     <label for="name">name </label>
     <input name="name" type="text" [(ngModel)]="name"><br><hr>
 
     <label for="desc">description </label>
-    <input name="desc" type="text" [(ngModel)]="desc"><br><hr>
+    <textarea name="desc" [(ngModel)]="desc"></textarea><br><hr>
 
     <label for="type">type </label>
     <select name="type" [(ngModel)]="type">
-      @for (siur of type_enum; track siur) {
-        <option (value)="siur">{{ siur }}</option>
+      @for (type of supabaseService.type_enum; track type) {
+        <option (value)="type">{{ type }}</option>
       }
     </select><br><hr>
 
@@ -24,23 +26,23 @@
     <label for="sale">sale </label>
     <select name="sale" [(ngModel)]="sale">
       @for (sale of sales(); track sale.id) {
-        <option (value)="sale.id">{{ sale.name }}</option>
+        <option [value]="sale.id">{{ sale.name }}</option>
       }
     </select><br><hr>
 
     <label for="props">properties </label>
     <select name="props" multiple size="10px" [(ngModel)]="props">
-    @for (siur of prop_enum; track siur) {
-      <option (value)="siur">{{ siur }}</option>
+    @for (prop of supabaseService.prop_enum; track prop) {
+      <option (value)="prop">{{ prop }}</option>
     }
     </select><br><hr>
 
     <label for="image">image path </label>
     <input name="image" type="text" [(ngModel)]="image"><br><hr>
 
-    <input type="submit" value="submit">
+    <button type="submit">Submit</button>
 
-    <h2 id="err">{{ err_msg() }}</h2>
+    <h2 id="msg" [class.err]="msg_type == 0" [class.suc]="msg_type == 1">{{ msg() }}</h2>
   </form>
 
 </div>

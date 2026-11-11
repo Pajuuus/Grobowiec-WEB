@@ -9,7 +9,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  width: 10%;
+  width: 15%;
 }
 
 div {
@@ -17,6 +17,14 @@ div {
   justify-content: center;
 }
 
-#err {
+.err {
   color: red;
+}
+
+.suc {
+  color: green;
+}
+
+textarea {
+  max-width: 100%;
 }
