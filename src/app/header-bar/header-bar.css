@@ -280,9 +280,22 @@ p:hover {
       p {
         color: #D400FF;
       }
+      p:hover {
+        animation: animation2 infinite 1s ease-in-out alternate;
+      }
   }
 
 
+  @keyframes animation2 {
+    from {
+      color: #D400FF;
+      font-size: 100%;
+    }
+    to {
+      color: yellow;
+      font-size: 130%;
+    }
+  }
   @keyframes animation1 {
     from {
       color: #704214;
