@@ -12,7 +12,7 @@
 
     <label for="type">type </label>
     <select name="type" [(ngModel)]="type">
-      @for (type of supabaseService.type_enum; track type) {
+      @for (type of supabaseService.prod_type_enum; track type) {
         <option (value)="type">{{ type }}</option>
       }
     </select><br><hr>

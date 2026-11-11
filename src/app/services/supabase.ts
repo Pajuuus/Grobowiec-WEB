@@ -30,12 +30,19 @@ export class SupabaseService {
     "Rozmiar - XXL",
     "Rozmiar - 3XL"
   ];
-  type_enum = [
+  prod_type_enum = [
     "znicz",
     "trumna",
     "urna",
     "kwiaty",
     "nagrobek"
+  ];
+  ser_type_enum = [
+    "pogrzeb",
+    "kremacja",
+    "balsamacja",
+    "promesa",
+    "custom pogrzeb"
   ];
 
   sales = signal<any[]>([]);
