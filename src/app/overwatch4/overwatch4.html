@@ -1,5 +1,5 @@
 <div>
-  @for (sale of sales(); track sale.id) {
+  @for (sale of supabaseService.sales(); track sale.id) {
     @if (sale.id == active_sale_id) {
       <img id="img" [src]="image_src()">
       }
@@ -9,7 +9,7 @@
     <nav>
       <button id="left_edge" (click)="prev_sale()"><</button>
 
-      @for (sale of sales(); track sale.id) {
+      @for (sale of supabaseService.sales(); track sale.id) {
           <button class="button" [class.active]="sale.id == active_sale_id" (click)="change_sale(sale.id)">{{sale.name}}</button>
       }
 

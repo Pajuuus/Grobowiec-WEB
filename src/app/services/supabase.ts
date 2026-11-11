@@ -39,12 +39,14 @@ export class SupabaseService {
   ];
 
   sales = signal<any[]>([]);
+  products = signal<any[]>([]);
   loading = true;
 
   constructor() {
     this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
 
     this.load_sales();
+    this.load_products();
   }
 
   public async getTableData(tableName: string) {
@@ -78,6 +80,17 @@ export class SupabaseService {
     try {
       const data = await this.getTableData('Sales');
       this.sales.set(data);
+    } catch (error) {
+      console.error("Database connection failed");
+    } finally {
+      this.loading = false;
+    }
+  }
+
+  async load_products() {
+    try {
+      const data = await this.getTableData('Products');
+      this.products.set(data);
     } catch (error) {
       console.error("Database connection failed");
     } finally {

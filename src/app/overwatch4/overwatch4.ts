@@ -10,22 +10,17 @@ import { SupabaseService } from '../services/supabase';
 export class Overwatch4 implements OnInit {
   private readonly supabaseService = inject(SupabaseService);
 
-  sales = signal<any[]>([]);
-
   active_sale_id = 0;
   image_src = signal("");
 
-  constructor() {
-    this.sales = this.supabaseService.sales;
-  }
-
   async ngOnInit() {
+    await this.supabaseService.load_sales();
     this.change_sale(0);
   }
 
   change_sale(id: number) {
     this.active_sale_id = id;
-    const sale = this.sales().find(x => x.id == id);
+    const sale = this.supabaseService.sales().find(x => x.id == id);
 
     this.image_src.set(sale.image_path);
   }
@@ -33,7 +28,7 @@ export class Overwatch4 implements OnInit {
   next_sale() {
     var id = this.active_sale_id + 1;
 
-    if (id >= this.sales().length) {
+    if (id >= this.supabaseService.sales().length) {
       id = 0;
     }
 
@@ -44,7 +39,7 @@ export class Overwatch4 implements OnInit {
     var id = this.active_sale_id - 1;
 
     if (id < 0) {
-      id = this.sales().length - 1;
+      id = this.supabaseService.sales().length - 1;
     }
 
     this.change_sale(id)

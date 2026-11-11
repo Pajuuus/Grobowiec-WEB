@@ -9,7 +9,10 @@ import { DaneService } from '../services/whenimechainasuma';
   templateUrl: './header-bar.html',
   styleUrl: './header-bar.css'
 })
-export class HeaderBar implements OnInit {
+export class HeaderBar {
+  private supabaseService = inject(SupabaseService);
+  private daneService = inject(DaneService);
+
   CategoryView = 1;
   OtherView = 0;
 
@@ -20,16 +23,7 @@ export class HeaderBar implements OnInit {
     this.OtherView = x;
   }
 
-  sales = signal<any[]>([]);
-
-  constructor(private supabaseService: SupabaseService, public daneService: DaneService) {}
-
-  async ngOnInit() {
-      const data = await this.supabaseService.getTableData('Sales');
-      this.sales.set(data);
+  search(x = '') {
+    this.daneService.search_prompt.set(x);
   }
-
-    wyslij(x = '') {
-      this.daneService.zmienna.set(x);
-    }
-  }
+}

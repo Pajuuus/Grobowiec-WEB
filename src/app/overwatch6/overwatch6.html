@@ -25,7 +25,7 @@
 
     <label for="sale">sale </label>
     <select name="sale" [(ngModel)]="sale">
-      @for (sale of sales(); track sale.id) {
+      @for (sale of supabaseService.sales(); track sale.id) {
         <option [value]="sale.id">{{ sale.name }}</option>
       }
     </select><br><hr>

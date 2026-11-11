@@ -20,13 +20,8 @@ export class Overwatch6 {
   props = [];
   image = "";
 
-  sales = signal<any[]>([]);
   msg = signal("");
   msg_type = 0;
-
-  constructor() {
-    this.sales = this.supabaseService.sales;
-  }
 
   async send_request() {
     if (this.name == "" || this.type == "" || this.price < 0 || this.in_stock < 0 || this.props.length == 0 || this.image == "") {

@@ -10,7 +10,7 @@
         <button>Zatwierdź</button>
 
         <br>
-      @if ('znicz' == daneService.zmienna()){
+      @if ('znicz' == daneService.search_prompt()){
         <h3>Wkład znicza</h3>
         <label><input type="checkbox"> oleisty</label>
         <label><input type="checkbox"> parafinowy</label>
@@ -47,9 +47,9 @@
   <article>
     <header>
       <div class="up">
-        <h1 class="name" [class.active]="daneService.zmienna() == ''"></h1>
-        <h1 class="name" [class.active]="daneService.zmienna() == 'znicz'">Znicze</h1>
-        <h1 class="name" [class.active]="daneService.zmienna() == 'trumna'">Trumny</h1>
+        <h1 class="name" [class.active]="daneService.search_prompt() == ''"></h1>
+        <h1 class="name" [class.active]="daneService.search_prompt() == 'znicz'">Znicze</h1>
+        <h1 class="name" [class.active]="daneService.search_prompt() == 'trumna'">Trumny</h1>
         <select>
           <option>Losowo</option>
           <option>Cena malejąco</option>
@@ -59,8 +59,8 @@
       <div class="down">
       </div>
     </header>
-    @for (product of products(); track product.id) {
-      @if (product.type == daneService.zmienna()){
+    @for (product of supabaseService.products(); track product.id) {
+      @if (product.type == daneService.search_prompt()){
         <div class="product">
           <img src="/images/images.jpeg">
           <div class="left">
@@ -76,7 +76,6 @@
             <p>{{product.in_stock}}</p>
           </div>
         </div>
-
     }
   }
   </article>

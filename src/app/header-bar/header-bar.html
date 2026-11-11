@@ -8,16 +8,16 @@
     </div>
     <div id="bottom">
       @if (CategoryView == 1){
-        @for (sale of sales(); track sale.id) {
+        @for (sale of supabaseService.sales(); track sale.id) {
             <p>{{sale.name}}</p>
         }
       }
       @if (CategoryView == 2){
-        <p (click)="wyslij('znicz')">Znicze</p>
-        <p (click)="wyslij('trumna')">Trumny</p>
-        <p (click)="wyslij('urna')">Urny</p>
-        <p (click)="wyslij('kwiaty')">Kwiaty</p>
-        <p (click)="wyslij('nagrobek')">Nagrobki</p>
+        <p (click)="search('znicz')">Znicze</p>
+        <p (click)="search('trumna')">Trumny</p>
+        <p (click)="search('urna')">Urny</p>
+        <p (click)="search('kwiaty')">Kwiaty</p>
+        <p (click)="search('nagrobek')">Nagrobki</p>
       }
       @if (CategoryView == 3){
         <p>Pogrzeb</p>
