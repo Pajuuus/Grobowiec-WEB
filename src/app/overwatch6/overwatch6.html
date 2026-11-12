@@ -5,40 +5,40 @@
     <h2>Dodawanie nowego produkty</h2>
 
     <label for="name">name </label>
-    <input name="name" type="text" [(ngModel)]="name"><br><hr>
+    <input name="name" type="text" [(ngModel)]="name"><hr><br>
 
     <label for="desc">description </label>
-    <textarea name="desc" [(ngModel)]="desc"></textarea><br><hr>
+    <textarea name="desc" [(ngModel)]="desc"></textarea><hr><br>
 
     <label for="type">type </label>
     <select name="type" [(ngModel)]="type">
       @for (type of supabaseService.prod_type_enum; track type) {
         <option (value)="type">{{ type }}</option>
       }
-    </select><br><hr>
+    </select><hr><br>
 
     <label for="price">price </label>
-    <input name="price" type="number" [(ngModel)]="price"><br><hr>
+    <input name="price" type="number" [(ngModel)]="price"><hr><br>
 
     <label for="in_stock">in stock </label>
-    <input name="in_stock" type="number" [(ngModel)]="in_stock"><br><hr>
+    <input name="in_stock" type="number" [(ngModel)]="in_stock"><hr><br>
 
     <label for="sale">sale </label>
     <select name="sale" [(ngModel)]="sale">
       @for (sale of supabaseService.sales(); track sale.id) {
         <option [value]="sale.id">{{ sale.name }}</option>
       }
-    </select><br><hr>
+    </select><hr><br>
 
     <label for="props">properties </label>
     <select name="props" multiple size="10px" [(ngModel)]="props">
     @for (prop of supabaseService.prop_enum; track prop) {
       <option (value)="prop">{{ prop }}</option>
     }
-    </select><br><hr>
+    </select><hr><br>
 
     <label for="image">image path </label>
-    <input name="image" type="text" [(ngModel)]="image"><br><hr>
+    <input name="image" type="text" [(ngModel)]="image"><hr><br>
 
     <button type="submit">Submit</button>
 

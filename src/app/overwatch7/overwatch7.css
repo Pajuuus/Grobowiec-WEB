@@ -1,0 +1,23 @@
+* {
+  text-align: center;
+}
+
+#div {
+  display: flex;
+  justify-content: center;
+}
+
+#div2 {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#page * {
+  display: none;
+}
+
+#page .active {
+  display: block;
+}
