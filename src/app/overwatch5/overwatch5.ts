@@ -10,7 +10,6 @@ import { DaneService } from '../services/whenimechainasuma';
 })
 export class Overwatch5 implements OnInit{
   products = signal<any[]>([]);
-  huj = signal("");
 
   constructor(private supabaseService: SupabaseService, public daneService: DaneService) {}
 
@@ -19,7 +18,9 @@ export class Overwatch5 implements OnInit{
       this.products.set(data);
   }
 
-  jaja() {
-    this.huj.set("value");
+  sorting(sortType = 'random') {
+    if(sortType == 'growing'){
+      this.products.update(x => x.toSorted((a, b) => a.price - b.price));
+    }
   }
 }
