@@ -1,5 +1,5 @@
 <main>
-  <img id="logo" src="/images/images.jpeg">
+  <img id="logo" (click)="search('main')" src="/appicon.png">
   <nav>
     <div id="upper">
       <a><button class="categoryChangeButtons" [class.active]="CategoryView == 1" (click)="categoryView(1)">Promocje</button></a>
@@ -32,7 +32,7 @@
   </form>
   <button class="OtherChangeButtons" [class.active]="OtherView == 2" (click)="otherChange(2)" id="buildButton">Złóż swój własny pogrzeb!</button>
   <div id="usefullButtons">
-    <button id="cartButton"><img src="/images/images.jpeg"></button>
-    <button id="wishList"><img src="/images/images.jpeg"></button>
+    <button id="cartButton" class="cart" [class.active]="OtherView == 3" (click)="search('formulaz'); otherChange(3)"><img class="cart" [class.active]="OtherView == 3"></button>
+    <button id="wishList" class="wish" [class.active]="OtherView == 4" (click)="search('formulaz'); otherChange(4)"><img class="wish" [class.active]="OtherView == 4"></button>
   </div>
 </main>

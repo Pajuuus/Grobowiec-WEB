@@ -4,10 +4,10 @@
       <nav>
         <br>
         <div>
-        <input type="number" placeholder="Min cena">
-        <input type="number" placeholder="Max cena">
+        <input type="number" #min placeholder="Min cena">
+        <input type="number" #max placeholder="Max cena">
         </div>
-        <button>Zatwierdź</button>
+        <button (click)="setPriceFilter(min.value, max.value)">Zatwierdź</button>
 
         <br>
       @if ('znicz' == daneService.search_prompt()){
@@ -50,19 +50,19 @@
         <h1 class="name" [class.active]="daneService.search_prompt() == ''"></h1>
         <h1 class="name" [class.active]="daneService.search_prompt() == 'znicz'">Znicze</h1>
         <h1 class="name" [class.active]="daneService.search_prompt() == 'trumna'">Trumny</h1>
-        <select>
-          <option>Losowo</option>
-          <option>Cena malejąco</option>
-          <option>Cena rosnąco</option>
+        <select [(ngModel)]="sortType" (ngModelChange)="sorting()">
+          <option value="random" selected>Losowo</option>
+          <option value="shrinking">Cena malejąco</option>
+          <option value="growing" >Cena rosnąco</option>
         </select>
       </div>
       <div class="down">
       </div>
     </header>
-    @for (product of supabaseService.products(); track product.id) {
-      @if (product.type == daneService.search_prompt()){
+    @for (product of products(); track product.id) {
+      @if (product.type == daneService.search_prompt() && product.price >= minPrice && product.price <= maxPrice){
         <div class="product">
-          <img src="/images/images.jpeg">
+          <img src="{{product.image}}">
           <div class="left">
             <h3>{{product.name}}</h3>
             @for (property of product.properties; track property) {
