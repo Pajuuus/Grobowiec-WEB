@@ -19,8 +19,7 @@ export class Overwatch10 {
   selected = () => this.supabaseService.sales().find(x => x.id == this.selected_prod);
 
   async send_request() {
-    console.warn(this.selected_prod);
-    this.supabaseService.deleteTableData("Products", this.selected_prod);
+    this.supabaseService.deleteTableData("products", this.selected_prod);
 
     this.msg_type = 1;
     this.msg.set("Done!");

@@ -23,7 +23,7 @@ export class Overwatch9 {
       this.msg.set("You messed something up");
     }
 
-    await this.supabaseService.insertTableData("Sales", {
+    await this.supabaseService.insertTableData("sales", {
       name: this.name,
       description: this.desc,
       image_path: this.image

@@ -28,7 +28,7 @@ export class Overwatch8 {
 
   async send_request() {
     console.warn(this.selected_prod);
-    this.supabaseService.deleteTableData("Products", this.selected_prod);
+    this.supabaseService.deleteTableData("products", this.selected_prod);
 
     this.msg_type = 1;
     this.msg.set("Done!");
