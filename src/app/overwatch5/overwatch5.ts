@@ -22,5 +22,8 @@ export class Overwatch5 implements OnInit{
     if(sortType == 'growing'){
       this.products.update(x => x.toSorted((a, b) => a.price - b.price));
     }
+    if (sortType) {
+      this.products.update(x => x.toSorted((a, b) => b.price - a.price));
+    }
   }
 }
