@@ -19,7 +19,7 @@ nav {
 }
 
 button {
-  color: #222222;
+  color: #222;
   background: #eee;
   border: none;
   padding: 0 5px;
@@ -39,4 +39,16 @@ button {
 
 .button.active {
   filter: brightness(0.9);
+}
+
+@media screen and (max-width: 400px) {
+  nav {
+    flex-direction: column;
+    margin-top: -45px;
+  }
+
+  #left_edge, #right_edge {
+    padding: 0;
+    border-radius: 0;
+  }
 }

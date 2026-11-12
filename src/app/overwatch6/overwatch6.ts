@@ -16,7 +16,7 @@ export class Overwatch6 {
   type = "";
   price = 9999.99;
   in_stock = 0;
-  sale = null;
+  sale = -1;
   props = [];
   image = "";
 
@@ -28,19 +28,26 @@ export class Overwatch6 {
       this.msg.set("You messed something up");
     }
 
-    await this.supabaseService.insertTableData("Products", {
+    const prod = await this.supabaseService.insertTableData("products", {
       name: this.name,
       description: this.desc,
       type: this.type,
       price: this.price,
       in_stock: this.in_stock,
-      sale: this.sale,
       properties: this.props,
       image: this.image
     });
 
+    console.warn(prod);
+    return;
+
+    if (this.sale != -1) {
+      this.supabaseService.appendTableData("sales", "products", this.sale, prod.id);
+    }
+
+    await this.supabaseService.load_products();
+
     this.msg_type = 1;
     this.msg.set("Done!");
-    this.supabaseService.load_products();
   }
 }
