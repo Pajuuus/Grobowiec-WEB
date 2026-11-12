@@ -1,0 +1,21 @@
+<div>
+  <form (ngSubmit)="send_request()">
+    <h2 id="msg" [class.err]="msg_type == 0" [class.suc]="msg_type == 1">{{ msg() }}</h2>
+
+    <h2>Adding new sale</h2>
+
+    <label for="name">name </label>
+    <input name="name" type="text" [(ngModel)]="name"><hr><br>
+
+    <label for="desc">description </label>
+    <textarea name="desc" [(ngModel)]="desc"></textarea><hr><br>
+
+    <label for="image">image path </label>
+    <input name="image" type="text" [(ngModel)]="image"><hr><br>
+
+    <button type="submit">Add</button>
+
+    <h2 id="msg" [class.err]="msg_type == 0" [class.suc]="msg_type == 1">{{ msg() }}</h2>
+  </form>
+
+</div>

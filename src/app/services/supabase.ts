@@ -95,9 +95,36 @@ export class SupabaseService {
       }
   }
 
+  public async updateTableData(tableName: string, id: number, data: any) {
+    const { error } = await this.supabase
+      .from(tableName)
+      .update(data)
+      .eq("id", id);
+
+    if (error) {
+      console.error('Błąd podczas pobierania danych:', error.message);
+      throw error;
+    }
+  }
+
+  public async appendTableData(tableName: string, column: string, id: number, data: number) {
+    const { error } = await this.supabase
+      .rpc('append_to_array', {
+        table_name: tableName,
+        column_name: column,
+        row_id: id,
+        new_item: data
+      });
+
+    if (error) {
+      console.error(`Error updating ${tableName}:`, error.message);
+      throw error;
+    }
+  }
+
   async load_sales() {
     try {
-      const data = await this.getTableData('Sales');
+      const data = await this.getTableData('sales');
       this.sales.set(data);
     } catch (error) {
       console.error("Database connection failed");
@@ -108,7 +135,7 @@ export class SupabaseService {
 
   async load_products() {
     try {
-      const data = await this.getTableData('Products');
+      const data = await this.getTableData('products');
       this.products.set(data);
     } catch (error) {
       console.error("Database connection failed");

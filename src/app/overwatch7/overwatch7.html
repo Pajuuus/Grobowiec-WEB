@@ -5,11 +5,15 @@
     <select [(ngModel)]="selected_page">
       <option value="add_product">Add product</option>
       <option value="delete_product">Delete product</option>
+      <option value="add_sale">Add sale</option>
+      <option value="delete_sale">Delete sale</option>
     </select><br>
 
     <div id="page">
       <overwatch6 [class.active]="selected_page == 'add_product'" />
       <overwatch8 [class.active]="selected_page == 'delete_product'" />
+      <overwatch9 [class.active]="selected_page == 'add_sale'" />
+      <overwatch10 [class.active]="selected_page == 'delete_sale'" />
     </div>
   </div>
 </div>
