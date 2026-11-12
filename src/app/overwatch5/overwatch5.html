@@ -62,7 +62,7 @@
     @for (product of products(); track product.id) {
       @if (product.type == daneService.search_prompt() && product.price >= minPrice && product.price <= maxPrice){
         <div class="product">
-          <img src="/images/images.jpeg">
+          <img src="{{product.image}}">
           <div class="left">
             <h3>{{product.name}}</h3>
             @for (property of product.properties; track property) {

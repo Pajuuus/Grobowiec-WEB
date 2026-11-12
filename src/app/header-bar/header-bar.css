@@ -1,5 +1,19 @@
 img {
-  width: 10%;
+  width: 80%;
+}
+.cart {
+  content: url('/images/light-theme/koszyk_brazowy.png');
+}
+.wish {
+  content: url('/images/light-theme/lista_brazowa.png');
+}
+.cart.active {
+  content: url('/images/light-theme/koszyk_bezowy.png');
+  background-color: #704214;
+}
+.wish.active {
+  content: url('/images/light-theme/lista_bezowa.png');
+  background-color: #704214;
 }
 * {
   margin: 0px;
@@ -282,6 +296,20 @@ p:hover {
       }
       p:hover {
         animation: animation2 infinite 1s ease-in-out alternate;
+      }
+      .cart {
+        content: url('/images/dark-theme/koszyk_borowkowy.png');
+      }
+      .wish {
+        content: url('/images/dark-theme/lista_borowkowa.png');
+      }
+      .cart.active {
+        content: url('/images/dark-theme/koszyk_czarny.png');
+        background-color: #D400FF;
+      }
+      .wish.active {
+        content: url('/images/dark-theme/lista_czarna.png');
+        background-color: #D400FF;
       }
   }
 
