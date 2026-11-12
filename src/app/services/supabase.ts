@@ -83,6 +83,18 @@ export class SupabaseService {
     return data;
   }
 
+  public async deleteTableData(tableName: string, id: number) {
+    const { error } = await this.supabase
+      .from(tableName)
+      .delete()
+      .eq("id", id)
+
+      if (error) {
+        console.error('Błąd podczas pobierania danych:', error.message);
+        throw error;
+      }
+  }
+
   async load_sales() {
     try {
       const data = await this.getTableData('Sales');

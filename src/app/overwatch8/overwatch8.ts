@@ -16,16 +16,23 @@ export class Overwatch8 {
 
   type = "";
   filtered = signal<any[]>([]);
-  selected_prod = null;
+  selected_prod = -1;
 
   type_changed() {
     const value = this.supabaseService.products().filter(x => x.type == this.type);
     this.filtered.set(value);
+    this.selected_prod = -1;
   }
 
   selected = () => this.filtered().find(x => x.id == this.selected_prod);
 
-  send_request() {
+  async send_request() {
+    console.warn(this.selected_prod);
+    this.supabaseService.deleteTableData("Products", this.selected_prod);
 
+    this.msg_type = 1;
+    this.msg.set("Done!");
+    await this.supabaseService.load_products();
+    this.type_changed();
   }
 }

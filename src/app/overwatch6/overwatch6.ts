@@ -41,5 +41,6 @@ export class Overwatch6 {
 
     this.msg_type = 1;
     this.msg.set("Done!");
+    this.supabaseService.load_products();
   }
 }
