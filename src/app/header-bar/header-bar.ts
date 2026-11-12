@@ -23,6 +23,11 @@ export class HeaderBar {
     this.OtherView = x;
   }
 
+  asideBar(x = false) {
+    this.daneService.asideBar.set(x);
+    console.warn(this.daneService.asideBar())
+  }
+
   search(x = '') {
     this.daneService.search_prompt.set(x);
   }
