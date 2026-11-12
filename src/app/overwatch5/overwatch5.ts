@@ -8,22 +8,16 @@ import { DaneService } from '../services/whenimechainasuma';
   styleUrl: './overwatch5.css',
   templateUrl: './overwatch5.html',
 })
-export class Overwatch5 implements OnInit{
-  products = signal<any[]>([]);
-
-  constructor(private supabaseService: SupabaseService, public daneService: DaneService) {}
-
-  async ngOnInit() {
-      const data = await this.supabaseService.getTableData('Products');
-      this.products.set(data);
-  }
+export class Overwatch5 {
+  private supabaseService = inject(SupabaseService);
+  private daneService = inject(DaneService);
 
   sorting(sortType = 'random') {
     if(sortType == 'growing'){
-      this.products.update(x => x.toSorted((a, b) => a.price - b.price));
+      this.supabaseService.products.update(x => x.toSorted((a, b) => a.price - b.price));
     }
     if (sortType) {
-      this.products.update(x => x.toSorted((a, b) => b.price - a.price));
+      this.supabaseService.products.update(x => x.toSorted((a, b) => b.price - a.price));
     }
   }
 }

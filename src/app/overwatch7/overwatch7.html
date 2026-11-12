@@ -1,0 +1,15 @@
+<div id="div">
+  <div id="div2">
+    <h2>Select database action</h2>
+
+    <select [(ngModel)]="selected_page">
+      <option value="add_product">Add product</option>
+      <option value="modify_product">Modify product</option>
+    </select><br>
+
+    <div id="page">
+      <overwatch6 [class.active]="selected_page == 'add_product'" />
+      <overwatch8 [class.active]="selected_page == 'modify_product'" />
+    </div>
+  </div>
+</div>

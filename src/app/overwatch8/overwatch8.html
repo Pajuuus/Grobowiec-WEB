@@ -1,0 +1,27 @@
+<form (ngSubmit)="send_request()">
+  <h2 id="msg" [class.err]="msg_type == 0" [class.suc]="msg_type == 1">{{ msg() }}</h2>
+
+  <h2>Modifying product</h2>
+
+  <label for="select_type">Select product type</label>
+  <select name="select_type" [(ngModel)]="type" (change)="type_changed()">
+    @for (prod of supabaseService.prod_type_enum; track prod) {
+      <option (value)="prod">{{ prod }}</option>
+    }
+  </select><hr><br>
+
+  <label for="select_prod">Select product</label>
+  <select name="select_prod" [(ngModel)]="selected_prod">
+    @for (prod of filtered(); track prod.id) {
+      <option [value]="prod.id">{{ prod.name }}</option>
+    }
+  </select><hr><br>
+
+  @if (selected_prod) {
+    <h3>Selected: {{ selected().name }}</h3>
+
+
+  }
+
+  <h2 id="msg" [class.err]="msg_type == 0" [class.suc]="msg_type == 1">{{ msg() }}</h2>
+</form>

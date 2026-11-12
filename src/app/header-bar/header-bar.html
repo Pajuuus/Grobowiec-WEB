@@ -8,23 +8,21 @@
     </div>
     <div id="bottom">
       @if (CategoryView == 1){
-        @for (sale of sales(); track sale.id) {
-            <p>{{sale.name}}</p>
+        @for (sale of supabaseService.sales(); track sale.id) {
+            <p>{{ sale.name }}</p>
         }
       }
+
       @if (CategoryView == 2){
-        <p (click)="wyslij('znicz')">Znicze</p>
-        <p (click)="wyslij('trumna')">Trumny</p>
-        <p (click)="wyslij('urna')">Urny</p>
-        <p (click)="wyslij('kwiaty')">Kwiaty</p>
-        <p (click)="wyslij('nagrobek')">Nagrobki</p>
+        @for (type of supabaseService.prod_type_enum; track type) {
+          <p (click)="search(type)">{{ type }}</p>
+        }
       }
+
       @if (CategoryView == 3){
-        <p>Pogrzeb</p>
-        <p>Balsamacja</p>
-        <p>Kremacja</p>
-        <p>Promesa</p>
-        <p>Konfigurator Pogrzebów</p>
+        @for (type of supabaseService.ser_type_enum; track type) {
+            <p>{{ type }}</p>
+        }
       }
     </div>
   </nav>

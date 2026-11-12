@@ -30,21 +30,30 @@ export class SupabaseService {
     "Rozmiar - XXL",
     "Rozmiar - 3XL"
   ];
-  type_enum = [
+  prod_type_enum = [
     "znicz",
     "trumna",
     "urna",
     "kwiaty",
     "nagrobek"
   ];
+  ser_type_enum = [
+    "pogrzeb",
+    "kremacja",
+    "balsamacja",
+    "promesa",
+    "custom pogrzeb"
+  ];
 
   sales = signal<any[]>([]);
+  products = signal<any[]>([]);
   loading = true;
 
   constructor() {
     this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
 
     this.load_sales();
+    this.load_products();
   }
 
   public async getTableData(tableName: string) {
@@ -78,6 +87,17 @@ export class SupabaseService {
     try {
       const data = await this.getTableData('Sales');
       this.sales.set(data);
+    } catch (error) {
+      console.error("Database connection failed");
+    } finally {
+      this.loading = false;
+    }
+  }
+
+  async load_products() {
+    try {
+      const data = await this.getTableData('Products');
+      this.products.set(data);
     } catch (error) {
       console.error("Database connection failed");
     } finally {
