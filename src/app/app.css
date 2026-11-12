@@ -2,3 +2,10 @@
   margin: 0;
   padding: 0;
 }
+
+aside-bar{
+  position: fixed;
+  height: 100%;
+  width: 30%;
+  background-color: white;
+}

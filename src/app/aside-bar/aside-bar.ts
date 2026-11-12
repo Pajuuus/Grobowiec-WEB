@@ -8,5 +8,6 @@ import { DaneService } from '../services/whenimechainasuma';
   templateUrl: './aside-bar.html',
 })
 export class AsideBar {
-  private daneService = Inject(DaneService);
+  public daneService = inject(DaneService);
+
 }
