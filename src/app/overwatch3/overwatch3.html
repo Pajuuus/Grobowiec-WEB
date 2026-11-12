@@ -1,3 +1,14 @@
-<overwatch4 [class.yes]="overwatch_id == 4" />
-<overwatch5 [class.yes]="overwatch_id == 5" />
-<overwatch7 [class.yes]="overwatch_id == 7" />
+@switch (daneService.search_prompt()) {
+  @case ('main') {
+    <overwatch4></overwatch4>
+  }
+  @case('trumna')  @case('znicz')  @case('urna')  @case('kwiaty')  @case('nagrobek'){
+    <overwatch5></overwatch5>
+  }
+  @case ('formulaz'){
+    <overwatch7></overwatch7>
+  }
+  @default {
+    <overwatch4></overwatch4>
+  }
+}
