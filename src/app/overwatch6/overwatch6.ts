@@ -28,7 +28,7 @@ export class Overwatch6 {
       this.msg.set("You messed something up");
     }
 
-    const prod = await this.supabaseService.insertTableData("products", {
+    await this.supabaseService.insertTableData("products", {
       name: this.name,
       description: this.desc,
       type: this.type,
@@ -38,14 +38,12 @@ export class Overwatch6 {
       image: this.image
     });
 
-    console.warn(prod);
-    return;
+    await this.supabaseService.load_products();
+    const prod = this.supabaseService.products().findLast(x => true);
 
     if (this.sale != -1) {
       this.supabaseService.appendTableData("sales", "products", this.sale, prod.id);
     }
-
-    await this.supabaseService.load_products();
 
     this.msg_type = 1;
     this.msg.set("Done!");
