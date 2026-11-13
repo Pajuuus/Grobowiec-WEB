@@ -9,7 +9,7 @@
     <input type="password" #pas placeholder="Twoje hasełko">
     <button (click)="Login(tel.value, pas.value)">zaloguj</button>
     <h3>Nie masz konta? Załóz już dziś i odkryj pełnię możliwości!</h3>
-    <button>Zarejestruj</button>
+    <button (click)="RegisterView()">Zarejestruj</button>
 
     @if(register){
     <h1>Tworzenie konta</h1>
@@ -23,6 +23,7 @@
     <input #surname type="text">
     <label>Hasło</label>
     <input #password type="text">
+    <button (click)="Register(phone.value, username.value, name.value, surname.value, password.value)">huj</button>
     }
   }
 

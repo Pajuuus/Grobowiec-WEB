@@ -24,22 +24,33 @@ export class AsideBar {
     }
   }
 
-  Register(phone: number, username: string, name: string, surname: string, password: string) {
-    this.supabaseService.insertTableData("user", {
-      phone: phone,
-      username: username,
-      name: name,
-      surname: surname,
-      password: password
-    })
+  async Register(phone: any, username: string, name: string, surname: string, password: string) {
+    if (String(phone).length == 9) {
+      try {
+        await this.supabaseService.insertTableData("users", {
+          phone: phone,
+          username: username,
+          name: name,
+          surname: surname,
+          password: password
+        });
+      } catch (error) {
+        alert("Twój numer telefonu jest już zajęty");
+      }
+    } else {
+      alert("Twój numer telefonu nie istnieje");
+    }
   }
 
   Close(x: boolean) {
     this.daneService.asideBar.set(x);
   }
 
-  Login(phone: any, password: any) {
-    this.supabaseService.load_user(phone, password);
+  async Login(phone: any, password: any) {
+    const dbuser = await this.supabaseService.load_user(phone, password);
+    this.user.username = dbuser.username;
+    this.user.points = dbuser.points;
+
   }
 
 }
