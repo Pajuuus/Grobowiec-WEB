@@ -23,9 +23,13 @@ export class HeaderBar {
     this.OtherView = x;
   }
 
-  asideBar(x = false) {
-    this.daneService.asideBar.set(x);
-    console.warn(this.daneService.asideBar())
+  asideBar() {
+    if(this.daneService.asideBar() == true){
+      this.daneService.asideBar.set(false);
+      this.OtherView = 0;
+    } else {
+      this.daneService.asideBar.set(true);
+    }
   }
 
   search(x = '') {

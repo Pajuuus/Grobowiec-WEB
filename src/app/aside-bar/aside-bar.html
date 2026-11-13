@@ -1,3 +1,33 @@
 <main [class.active]="daneService.asideBar()">
-  dsadasdsa
+  <button (click)="Close(false)">X</button>
+
+  @if(user.phone() == 0){
+    <h1>Logowanie</h1>
+    <label>Telefon</label>
+    <input type="number" #tel placeholder="100 200 300">
+    <label>Hasło</label>
+    <input type="password" #pas placeholder="Twoje hasełko">
+    <button (click)="Login(tel.value, pas.value)">zaloguj</button>
+    <h3>Nie masz konta? Załóz już dziś i odkryj pełnię możliwości!</h3>
+    <button>Zarejestruj</button>
+
+    @if(register){
+    <h1>Tworzenie konta</h1>
+    <label>Numer Telefonu</label>
+    <input #phone type="number">
+    <label>Przydomek</label>
+    <input #username type="text">
+    <label>Imię</label>
+    <input #name type="text">
+    <label>Nazwisko</label>
+    <input #surname type="text">
+    <label>Hasło</label>
+    <input #password type="text">
+    }
+  }
+
+  @if(user.phone() != 0){
+    <h1>Ustawienia konta</h1>
+    <p>W budowie, na razie możesz se coś kupić</p>
+  }
 </main>
