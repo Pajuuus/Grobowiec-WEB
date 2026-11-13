@@ -20,12 +20,10 @@ export class Overwatch6 {
   props = [];
   image = "";
 
-  msg = signal("");
-  msg_type = 0;
-
   async send_request() {
     if (this.name == "" || this.type == "" || this.price < 0 || this.in_stock < 0 || this.props.length == 0 || this.image == "") {
-      this.msg.set("You messed something up");
+      alert("You messed something up");
+      return;
     }
 
     await this.supabaseService.insertTableData("products", {
@@ -45,7 +43,6 @@ export class Overwatch6 {
       this.supabaseService.appendTableData("sales", "products", this.sale, prod.id);
     }
 
-    this.msg_type = 1;
-    this.msg.set("Done!");
+    alert("Done!");
   }
 }

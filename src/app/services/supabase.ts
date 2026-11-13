@@ -127,7 +127,7 @@ export class SupabaseService {
     }
   }
 
-  async load_user(phone: number, password: string) {
+  public async load_user(phone: number, password: string) {
     const { data, error } = await this.supabase
       .from("users")
       .select("name, surname, username, points, visited")
