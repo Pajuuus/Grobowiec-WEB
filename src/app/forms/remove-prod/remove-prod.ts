@@ -1,18 +1,15 @@
 import { Component, signal, inject } from '@angular/core';
-import { SupabaseService } from '../services/supabase';
+import { SupabaseService } from '../../services/supabase';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   imports: [FormsModule],
-  selector: 'overwatch8',
-  styleUrl: './overwatch8.css',
-  templateUrl: './overwatch8.html',
+  selector: 'remove-prod',
+  styleUrl: './remove-prod.css',
+  templateUrl: './remove-prod.html',
 })
-export class Overwatch8 {
+export class RemoveProd {
   private supabaseService = inject(SupabaseService);
-
-  msg_type = 0;
-  msg = signal("");
 
   type = "";
   filtered = signal<any[]>([]);
@@ -30,9 +27,8 @@ export class Overwatch8 {
     console.warn(this.selected_prod);
     this.supabaseService.deleteTableData("products", this.selected_prod);
 
-    this.msg_type = 1;
-    this.msg.set("Done!");
     await this.supabaseService.load_products();
     this.type_changed();
+    alert("Done!");
   }
 }

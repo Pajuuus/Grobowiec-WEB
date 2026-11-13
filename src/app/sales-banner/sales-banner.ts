@@ -3,11 +3,11 @@ import { SupabaseService } from '../services/supabase';
 
 @Component({
   imports: [],
-  selector: 'overwatch4',
-  styleUrl: './overwatch4.css',
-  templateUrl: './overwatch4.html',
+  selector: 'sales-banner',
+  styleUrl: './sales-banner.css',
+  templateUrl: './sales-banner.html',
 })
-export class Overwatch4 implements OnInit {
+export class SalesBanner implements OnInit {
   private readonly supabaseService = inject(SupabaseService);
 
   active_sale_id = 0;

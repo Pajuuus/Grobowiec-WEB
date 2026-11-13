@@ -1,14 +1,14 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { SupabaseService } from '../services/supabase';
+import { SupabaseService } from '../../services/supabase';
 
 @Component({
   imports: [FormsModule],
-  selector: 'overwatch6',
-  styleUrl: './overwatch6.css',
-  templateUrl: './overwatch6.html',
+  selector: 'add-prod',
+  styleUrl: './add-prod.css',
+  templateUrl: './add-prod.html',
 })
-export class Overwatch6 {
+export class AddProd {
   private readonly supabaseService = inject(SupabaseService);
 
   name = "";

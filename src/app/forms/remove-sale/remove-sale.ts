@@ -1,18 +1,15 @@
 import { Component, inject, signal } from '@angular/core';
-import { SupabaseService } from '../services/supabase';
+import { SupabaseService } from '../../services/supabase';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   imports: [FormsModule],
-  selector: 'overwatch10',
-  styleUrl: './overwatch10.css',
-  templateUrl: './overwatch10.html',
+  selector: 'remove-sale',
+  styleUrl: './remove-sale.css',
+  templateUrl: './remove-sale.html',
 })
-export class Overwatch10 {
+export class RemoveSale {
   private readonly supabaseService = inject(SupabaseService);
-
-  msg_type = 0;
-  msg = signal("");
 
   selected_prod = -1;
 
@@ -21,8 +18,7 @@ export class Overwatch10 {
   async send_request() {
     this.supabaseService.deleteTableData("products", this.selected_prod);
 
-    this.msg_type = 1;
-    this.msg.set("Done!");
+    alert("Done!");
     await this.supabaseService.load_products();
   }
 }

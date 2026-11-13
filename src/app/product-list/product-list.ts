@@ -5,11 +5,11 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   imports: [FormsModule],
-  selector: 'overwatch5',
-  styleUrl: './overwatch5.css',
-  templateUrl: './overwatch5.html',
+  selector: 'product-list',
+  styleUrl: './product-list.css',
+  templateUrl: './product-list.html',
 })
-export class Overwatch5 {
+export class ProductList {
   private supabaseService = inject(SupabaseService);
   private daneService = inject(DaneService);
 

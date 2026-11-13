@@ -1,6 +1,4 @@
 <form (ngSubmit)="send_request()">
-  <h2 id="msg" [class.err]="msg_type == 0" [class.suc]="msg_type == 1">{{ msg() }}</h2>
-
   <h2>Removing product</h2>
 
   <label for="select_type">Select product type</label>
@@ -22,6 +20,4 @@
 
     <button type="submit">Delete</button>
   }
-
-  <h2 id="msg" [class.err]="msg_type == 0" [class.suc]="msg_type == 1">{{ msg() }}</h2>
 </form>

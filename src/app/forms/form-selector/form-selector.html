@@ -10,10 +10,10 @@
     </select><br>
 
     <div id="page">
-      <overwatch6 [class.active]="selected_page == 'add_product'" />
-      <overwatch8 [class.active]="selected_page == 'delete_product'" />
-      <overwatch9 [class.active]="selected_page == 'add_sale'" />
-      <overwatch10 [class.active]="selected_page == 'delete_sale'" />
+      <add-prod [class.active]="selected_page == 'add_product'" />
+      <remove-prod [class.active]="selected_page == 'delete_product'" />
+      <add-sale [class.active]="selected_page == 'add_sale'" />
+      <remove-sale [class.active]="selected_page == 'delete_sale'" />
     </div>
   </div>
 </div>

@@ -1,26 +1,23 @@
 import { Component, inject, signal } from '@angular/core';
-import { SupabaseService } from '../services/supabase';
+import { SupabaseService } from '../../services/supabase';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   imports: [FormsModule],
-  selector: 'overwatch9',
-  styleUrl: './overwatch9.css',
-  templateUrl: './overwatch9.html',
+  selector: 'add-sale',
+  styleUrl: './add-sale.css',
+  templateUrl: './add-sale.html',
 })
-export class Overwatch9 {
+export class AddSale {
   private readonly supabaseService = inject(SupabaseService);
 
   name = "";
   desc = "";
   image = "";
 
-  msg = signal("");
-  msg_type = 0;
-
   async send_request() {
     if (this.name == "" || this.image == "") {
-      this.msg.set("You messed something up");
+      alert("You messed something up");
     }
 
     await this.supabaseService.insertTableData("sales", {
@@ -29,8 +26,7 @@ export class Overwatch9 {
       image_path: this.image
     });
 
-    this.msg_type = 1;
-    this.msg.set("Done!");
+    alert("Done!");
     this.supabaseService.load_sales();
   }
 }
