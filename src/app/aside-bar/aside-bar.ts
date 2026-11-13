@@ -38,8 +38,8 @@ export class AsideBar {
     this.daneService.asideBar.set(x);
   }
 
-  Login(phone: number, password: string) {
-
+  Login(phone: any, password: any) {
+    this.supabaseService.load_user(phone, password);
   }
 
 }
