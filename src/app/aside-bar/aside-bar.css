@@ -4,4 +4,6 @@ main {
 
 main.active {
   display: block;
+  background: #f2e3a6;
+  height: 100%;
 }
