@@ -26,22 +26,26 @@ export class Overwatch4 implements OnInit {
   }
 
   next_sale() {
-    var id = this.active_sale_id + 1;
+    const sale = this.supabaseService.sales().find(x => x.id > this.active_sale_id);
 
-    if (id >= this.supabaseService.sales().length) {
-      id = 0;
+    if (sale) {
+      this.change_sale(sale.id);
+    } else {
+      this.change_sale(0);
     }
-
-    this.change_sale(id);
   }
 
   prev_sale() {
-    var id = this.active_sale_id - 1;
+    const sale = this.supabaseService.sales().findLast(x => x.id < this.active_sale_id);
 
-    if (id < 0) {
-      id = this.supabaseService.sales().length - 1;
+    var x;
+
+    try {
+      x = sale.id;
+    } catch (error) {
+      x = this.supabaseService.sales().findLast(x => true).id;
+    } finally {
+      this.change_sale(x)
     }
-
-    this.change_sale(id)
   }
 }

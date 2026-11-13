@@ -28,7 +28,12 @@ export class SupabaseService {
     "Rozmiar - L",
     "Rozmiar - XL",
     "Rozmiar - XXL",
-    "Rozmiar - 3XL"
+    "Rozmiar - 3XL",
+    "dziedzięcy",
+    "standardowy",
+    "pojedyńczy",
+    "podwójny",
+    "rodzinny",
   ];
   prod_type_enum = [
     "znicz",
@@ -120,6 +125,21 @@ export class SupabaseService {
       console.error(`Error updating ${tableName}:`, error.message);
       throw error;
     }
+  }
+
+  async load_user(phone: number, password: string) {
+    const { data, error } = await this.supabase
+      .from("users")
+      .select("name, surname, username, points, visited")
+      .eq("phone", phone)
+      .eq("password", password);
+
+    if (error) {
+      console.error('Błąd podczas pobierania danych:', error.message);
+      throw error;
+    }
+
+    return data[0];
   }
 
   async load_sales() {
