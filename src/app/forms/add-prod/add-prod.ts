@@ -14,14 +14,14 @@ export class AddProd {
   name = "";
   desc = "";
   type = "";
-  price = 9999.99;
+  price = 0;
   in_stock = 0;
   sale = -1;
   props = [];
   image = "";
 
   async send_request() {
-    if (this.name == "" || this.type == "" || this.price < 0 || this.in_stock < 0 || this.props.length == 0 || this.image == "") {
+    if (this.name == "" || this.type == "" || this.price <= 0 || this.in_stock < 0 || this.props.length == 0 || this.image == "") {
       alert("You messed something up");
       return;
     }

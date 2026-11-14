@@ -7,6 +7,7 @@
       <option value="delete_product">Delete product</option>
       <option value="add_sale">Add sale</option>
       <option value="delete_sale">Delete sale</option>
+      <option value="add_service">Add service</option>
     </select><br>
 
     <div id="page">
@@ -14,6 +15,7 @@
       <remove-prod [class.active]="selected_page == 'delete_product'" />
       <add-sale [class.active]="selected_page == 'add_sale'" />
       <remove-sale [class.active]="selected_page == 'delete_sale'" />
+      <add-service [class.active]="selected_page == 'add_service'" />
     </div>
   </div>
 </div>
