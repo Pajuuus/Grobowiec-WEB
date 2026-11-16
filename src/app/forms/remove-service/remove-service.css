@@ -1,0 +1,22 @@
+* {
+  text-align: center;
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.err {
+  color: red;
+}
+
+.suc {
+  color: green;
+}
+
+textarea {
+  max-width: 100%;
+}

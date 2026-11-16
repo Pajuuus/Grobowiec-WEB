@@ -50,8 +50,9 @@ export class SupabaseService {
     "custom pogrzeb"
   ];
 
-  sales = signal<any[]>([]);
-  products = signal<any[]>([]);
+  public sales = signal<any[]>([]);
+  public products = signal<any[]>([]);
+  public services = signal<any[]>([]);
   loading = true;
 
   constructor() {
@@ -59,6 +60,7 @@ export class SupabaseService {
 
     this.load_sales();
     this.load_products();
+    this.load_services();
   }
 
   public async getTableData(tableName: string) {
@@ -81,7 +83,7 @@ export class SupabaseService {
       .insert(data);
 
     if (error) {
-      console.error('Błąd podczas pobierania danych:', error.message);
+      console.error('Błąd podczas aktualizowania danych:', error.message);
       throw error;
     }
 
@@ -95,7 +97,7 @@ export class SupabaseService {
       .eq("id", id)
 
       if (error) {
-        console.error('Błąd podczas pobierania danych:', error.message);
+        console.error('Błąd podczas usuwania danych:', error.message);
         throw error;
       }
   }
@@ -107,7 +109,7 @@ export class SupabaseService {
       .eq("id", id);
 
     if (error) {
-      console.error('Błąd podczas pobierania danych:', error.message);
+      console.error('Błąd podczas aktualizowania danych:', error.message);
       throw error;
     }
   }
@@ -130,7 +132,7 @@ export class SupabaseService {
   public async load_user(phone: number, password: string) {
     const { data, error } = await this.supabase
       .from("users")
-      .select("name, surname, username, points, visited")
+      .select("phone, name, surname, username, points, visited")
       .eq("phone", phone)
       .eq("password", password);
 
@@ -142,25 +144,43 @@ export class SupabaseService {
     return data[0];
   }
 
-  async load_sales() {
+  public async delete_user(phone: number, password: string) {
+    const { error } = await this.supabase
+      .from("users")
+      .delete()
+      .eq("phone", phone)
+      .eq("password", password)
+
+      if (error) {
+        console.error('Błąd podczas usuwania danych:', error.message);
+        throw error;
+      }
+  }
+
+  public async load_sales() {
     try {
       const data = await this.getTableData('sales');
       this.sales.set(data);
     } catch (error) {
-      console.error("Database connection failed");
-    } finally {
-      this.loading = false;
+      console.error("database connection failed");
     }
   }
 
-  async load_products() {
+  public async load_products() {
     try {
       const data = await this.getTableData('products');
       this.products.set(data);
     } catch (error) {
       console.error("Database connection failed");
-    } finally {
-      this.loading = false;
+    }
+  }
+
+  public async load_services() {
+    try {
+      const data = await this.getTableData('services');
+      this.services.set(data);
+    } catch (error) {
+      console.error("Database connection failed");
     }
   }
 }

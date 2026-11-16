@@ -18,6 +18,7 @@ export class AddSale {
   async send_request() {
     if (this.name == "" || this.image == "") {
       alert("You messed something up");
+      return;
     }
 
     await this.supabaseService.insertTableData("sales", {
@@ -26,7 +27,7 @@ export class AddSale {
       image_path: this.image
     });
 
-    alert("Done!");
     this.supabaseService.load_sales();
+    alert("Done!");
   }
 }

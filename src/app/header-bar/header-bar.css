@@ -1,5 +1,6 @@
 img {
   width: 80%;
+  height: 100%;
 }
 .cart {
   content: url('/images/light-theme/koszyk_brazowy.png');
