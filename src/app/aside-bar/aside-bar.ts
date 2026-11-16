@@ -62,7 +62,7 @@ export class AsideBar {
     }
   }
 
-  DeleteUser() {
+  async DeleteUser() {
     const questionsArray = [
       "Czy na pewno chcesz usunąć konto?",
       "Czy jesteś absolutnie pewny, że chcesz usunąć konto?",
