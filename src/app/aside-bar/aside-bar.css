@@ -36,3 +36,11 @@ nav h3{
 #h1{
   margin-top: 25px;
 }
+
+
+@media screen and (prefers-color-scheme: dark){
+* {
+  background-color: black;
+  color: #D400FF;
+}
+}

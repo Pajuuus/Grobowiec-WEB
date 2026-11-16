@@ -25,6 +25,11 @@ export class AsideBar {
   }
 
   async Register(phone: any, username: string, name: string, surname: string, password: string) {
+    if (!/[A-ZĄĆĘŁŃÓŚŹŻ]/.test(password)) { alert("Twoje hasło musi zawierać przynajmniej jedną dużą literę"); return;  }
+    if (!/[!?@#$]/.test(password)) { alert("Twoje hasło musi zawierać przynajmniej jeden znak specjalny"); return;  }
+    if (/012|123|234|345|456|567|678|789/.test(password)) { alert("Twoje hasło nie może zawierać ciągu trzech cyfr po kolei np. 123"); return;  }
+    if (password.length <= 14) { alert("Twoje hasło jest za krótkie"); return; }
+
     if (String(phone).length == 9) {
       try {
         await this.supabaseService.insertTableData("users", {
@@ -48,8 +53,10 @@ export class AsideBar {
 
   async Login(phone: any, password: any) {
     const dbuser = await this.supabaseService.load_user(phone, password);
+    this.user.phone.set(dbuser.phone);
     this.user.username.set(dbuser.username);
     this.user.points.set(dbuser.points);
+    this.user.password.set(password);
   }
 
   unlogin() {
@@ -122,6 +129,11 @@ export class AsideBar {
       }
     }
 
-
+    this.supabaseService.delete_user(this.user.phone(), this.user.password());
+    this.user.phone.set(0);
+    this.user.username.set("");
+    this.user.points.set(0);
+    this.user.password.set("");
+    alert("Þóµ←śłń→ę ↓ś↓ńęł→śµ← ßœóəę …óńßó")
   }
 }

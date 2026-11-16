@@ -27,7 +27,6 @@
       <button (click)="Register(phone.value, username.value, name.value, surname.value, password.value)">huj</button>
       }
     }
-  </nav>
 
   @if(user.username() != ""){
     <h1>Ustawienia konta</h1>
@@ -35,4 +34,5 @@
     <button (click)="unlogin()">Wyloguj</button>
     <button (click)="DeleteUser()">Usuń konto</button>
   }
+</nav>
 </main>
