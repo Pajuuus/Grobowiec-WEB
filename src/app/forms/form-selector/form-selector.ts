@@ -5,9 +5,10 @@ import { RemoveProd } from '../remove-prod/remove-prod';
 import { AddSale } from '../add-sale/add-sale';
 import { RemoveSale } from '../remove-sale/remove-sale';
 import { AddService } from '../add-service/add-service';
+import { RemoveServices } from '../remove-service/remove-service';
 
 @Component({
-  imports: [AddProd, RemoveProd, AddSale, RemoveSale, AddService, FormsModule],
+  imports: [AddProd, RemoveProd, AddSale, RemoveSale, AddService, RemoveServices, FormsModule],
   selector: 'form-selector',
   styleUrl: './form-selector.css',
   templateUrl: './form-selector.html',

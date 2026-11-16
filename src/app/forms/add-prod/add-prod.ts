@@ -43,6 +43,7 @@ export class AddProd {
       this.supabaseService.appendTableData("sales", "products", this.sale, prod.id);
     }
 
+    this.supabaseService.load_products();
     alert("Done!");
   }
 }
