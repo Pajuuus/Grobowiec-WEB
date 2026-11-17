@@ -1,14 +1,14 @@
 <form (ngSubmit)="send_request()">
   <h2>Removing sale</h2>
 
-  <label for="select_prod">Select sale</label>
-  <select name="select_prod" [(ngModel)]="selected_prod">
-    @for (prod of supabaseService.sales(); track prod.id) {
-      <option [value]="prod.id">{{ prod.name }}</option>
+  <label for="select_sale">Select sale</label>
+  <select name="select_sale" [(ngModel)]="selected_sale">
+    @for (sale of supabaseService.sales(); track sale.id) {
+      <option [value]="sale.id">{{ sale.name }}</option>
     }
   </select><hr><br>
 
-  @if (selected_prod != -1) {
+  @if (selected_sale != -1) {
     <h3>Selected: {{ selected().name }}</h3><hr><br>
 
     <button type="submit">Delete</button>

@@ -129,10 +129,24 @@ export class SupabaseService {
     }
   }
 
+  public async removeTableDataFromArray(tableName: string, column: string, data: number) {
+    const { error } = await this.supabase
+      .rpc('remove_from_array', {
+        table_name: tableName,
+        column_name: column,
+        item_to_remove: data
+      });
+
+    if (error) {
+      console.error(`Error updating ${tableName}:`, error.message);
+      throw error;
+    }
+  }
+
   public async load_user(phone: number, password: string) {
     const { data, error } = await this.supabase
       .from("users")
-      .select("phone, name, surname, username, points, visited")
+      .select("name, surname, username, points, visited")
       .eq("phone", phone)
       .eq("password", password);
 
