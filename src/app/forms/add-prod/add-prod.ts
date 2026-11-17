@@ -16,7 +16,7 @@ export class AddProd {
   type = "";
   price = 0;
   in_stock = 0;
-  sale = -1;
+  sales = [];
   props = [];
   image = "";
 
@@ -39,8 +39,10 @@ export class AddProd {
     await this.supabaseService.load_products();
     const prod = this.supabaseService.products().findLast(x => true);
 
-    if (this.sale != -1) {
-      this.supabaseService.appendTableData("sales", "products", this.sale, prod.id);
+    if (this.sales.length != 0) {
+      for (var sale of this.sales) {
+        this.supabaseService.appendTableData("sales", "products", sale, prod.id);
+      }
     }
 
     this.supabaseService.load_products();

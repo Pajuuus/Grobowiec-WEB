@@ -22,9 +22,7 @@
     <input name="image" type="text" [(ngModel)]="image"><hr><br>
 
     <label for="sale">sale </label>
-    <select name="sale" [(ngModel)]="sale">
-      <option [value]="-1"></option>
-
+    <select name="sale" multiple [(ngModel)]="sales">
       @for (sale of supabaseService.sales(); track sale.id) {
         <option [value]="sale.id">{{ sale.name }}</option>
       }
