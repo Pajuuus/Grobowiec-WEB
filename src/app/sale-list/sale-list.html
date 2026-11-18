@@ -6,7 +6,7 @@
 
     <div id="div">
         @for (prod of selected().products; track prod) {
-            <div>
+            <div (click)="clicked(prod)">
                 <img class="img" [src]="product(prod).image">
                 <p>{{ product(prod).name }}</p>
             </div>

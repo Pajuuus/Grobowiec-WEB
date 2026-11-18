@@ -233,7 +233,19 @@ export class SupabaseService {
 
   public async load_sales() {
     try {
-      const data = await this.getTableData('sales');
+      const now = new Date().toISOString();
+      const { data, error } = await this.supabase
+        .from("sales")
+        .select('*')
+        .order('id', { ascending: true })
+        .lt("valid_since", now)
+        .gt("valid_until", now);
+
+      if (error) {
+        console.error('Błąd podczas pobierania danych:', error.message);
+        throw error;
+      }
+
       this.sales.set(data);
     } catch (error) {
       console.error("database connection failed");

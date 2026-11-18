@@ -3,9 +3,9 @@
     <header>
       <nav>
         <br>
-        <div>
-        <input type="number" #min placeholder="Min cena">
-        <input type="number" #max placeholder="Max cena">
+        <div id="cena">
+          <input type="number" #min placeholder="Min cena">
+          <input type="number" #max placeholder="Max cena">
         </div>
         <button (click)="setPriceFilter(min.value, max.value)">Zatwierdź</button>
 
@@ -16,7 +16,6 @@
         <label><input type="checkbox" (change)="filterAdd(2)"> parafinowy</label>
         <label><input type="checkbox" (change)="filterAdd(3)"> elektryczny</label>
         <label><input type="checkbox" (change)="filterAdd(4)"> solarny</label>
-        <br>
 
         <h3>Czas do wypalenia</h3>
         <label><input type="checkbox" (change)="filterAdd(5)"> krótki 48h</label>

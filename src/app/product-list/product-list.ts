@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { SupabaseService } from '../services/supabase';
-import { DaneService } from '../services/whenimechainasuma';
+import { DaneService } from '../services/dane';
 import { FormsModule } from '@angular/forms';
 
 @Component({

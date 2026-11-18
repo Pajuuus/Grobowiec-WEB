@@ -1,5 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { SupabaseService } from '../services/supabase';
+import { DaneService } from '../services/dane';
 
 @Component({
   imports: [],
@@ -9,13 +10,14 @@ import { SupabaseService } from '../services/supabase';
 })
 export class SalesBanner implements OnInit {
   private readonly supabaseService = inject(SupabaseService);
+  private readonly daneService = inject(DaneService);
 
   active_sale_id = 0;
   image_src = signal("");
 
   async ngOnInit() {
     await this.supabaseService.load_sales();
-    this.change_sale(0);
+    this.change_sale(this.supabaseService.sales().find(x => true).id);
   }
 
   change_sale(id: number) {
@@ -47,5 +49,10 @@ export class SalesBanner implements OnInit {
     } finally {
       this.change_sale(x)
     }
+  }
+
+  clicked(id: number) {
+    this.daneService.selected_sale.set(id);
+    this.daneService.search_prompt.set("sale-list");
   }
 }

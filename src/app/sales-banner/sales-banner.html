@@ -1,7 +1,7 @@
 <div>
   @for (sale of supabaseService.sales(); track sale.id) {
     @if (sale.id == active_sale_id) {
-      <img id="img" [src]="image_src()">
+      <img id="img" [src]="image_src()" (click)="clicked(sale.id)">
       }
   }
 

@@ -1,5 +1,5 @@
 import { Component, Inject, inject } from '@angular/core';
-import { DaneService } from '../services/whenimechainasuma';
+import { DaneService } from '../services/dane';
 import { User } from '../services/user';
 import { SupabaseService } from '../services/supabase';
 

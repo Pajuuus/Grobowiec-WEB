@@ -3,22 +3,27 @@ main {
   justify-content: center;
   text-align: center;
 }
+
 nav {
   width: 200px;
   display: flex;
   flex-direction: column;
   text-align: left;
 }
+
 nav div{
   display: flex;
   flex-direction: row;
 }
+
 nav div input {
   width: 50%;
 }
+
 nav button {
   width: 100%;
 }
+
 aside {
   background-color: greenyellow;
   display: flex;
@@ -26,11 +31,13 @@ aside {
   width: 300px;
   height: 2000px;
 }
+
 article{
   background: magenta;
   width: 800px;
   height: 2000px;
 }
+
 .product {
   display: flex;
   width: 100%;
@@ -40,6 +47,7 @@ article{
   border: 3px yellow solid;
   border-radius: 8px;
 }
+
 .name {
   display: none;
 }
@@ -47,19 +55,23 @@ article{
 .name.active {
   display: block;
 }
+
 article header {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
+
 .up {
   margin-top: 10px;
   display: flex;
   justify-content: space-around;
 }
+
 .up h1 {
   width: 30%;
 }
+
 .up select {
   width: 50%;
   height: 40px;
@@ -71,17 +83,25 @@ img {
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
 }
+
 .left {
   width: 80%;
   display: flex;
   flex-direction: column;
 }
+
 .left h3, .left p{
   width: 100%;
 }
+
 .right {
   width: 20%;
 }
+
 button {
   width: 80%;
+}
+
+h3, #cena {
+  margin-top: 10px;
 }
