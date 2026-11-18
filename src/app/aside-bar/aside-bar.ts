@@ -53,7 +53,7 @@ export class AsideBar {
 
   async Login(phone: any, password: any) {
     const dbuser = await this.supabaseService.load_user(phone, password);
-    this.user.phone.set(dbuser.phone);
+    this.user.phone.set(phone);
     this.user.username.set(dbuser.username);
     this.user.points.set(dbuser.points);
     this.user.password.set(password);
