@@ -1,0 +1,9 @@
+*{
+    background-color: green;
+    margin-top: 0.5%;
+}
+.container, .pojedyncze {
+    display: flex;
+    font-size: 20px;
+    justify-content: space-between;
+}
