@@ -1,12 +1,12 @@
 @switch (daneService.search_prompt()) {
-  @case ('main') {
-    <sales-banner />
-  }
   @case('trumna')  @case('znicz')  @case('urna')  @case('kwiaty')  @case('nagrobek'){
     <product-list />
   }
   @case ('formulaz'){
     <form-selector />
+  }
+  @case ('sale-list'){
+    <sale-list />
   }
   @default {
     <sales-banner />

@@ -35,4 +35,9 @@ export class HeaderBar {
   search(x = '') {
     this.daneService.search_prompt.set(x);
   }
+
+  selected_sale(x = -1) {
+    this.daneService.selected_sale.set(x);
+    this.search("sale-list")
+  }
 }

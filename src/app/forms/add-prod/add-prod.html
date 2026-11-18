@@ -29,8 +29,9 @@
     </select><hr><br>
 
     <label for="props">properties </label>
+    <input name="props" [(ngModel)]="prop_filter">
     <select name="props" multiple size="10px" [(ngModel)]="props">
-    @for (prop of supabaseService.prop_enum; track prop) {
+    @for (prop of filtered_props(); track prop) {
       <option (value)="prop">{{ prop }}</option>
     }
     </select><hr><br>

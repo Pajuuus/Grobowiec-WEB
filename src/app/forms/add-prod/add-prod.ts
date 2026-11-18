@@ -11,6 +11,9 @@ import { SupabaseService } from '../../services/supabase';
 export class AddProd {
   private readonly supabaseService = inject(SupabaseService);
 
+  prop_filter = "";
+  filtered_props = () => this.supabaseService.prop_enum.filter(x => x.includes(this.prop_filter));
+
   name = "";
   desc = "";
   type = "";
