@@ -15,8 +15,8 @@ export class AddService {
   desc = "";
   image = "";
   type = "";
-  price = -1;
-  sale = -1;
+  price = 0;
+  sales = [];
 
   async send_request() {
     if (this.name == "" || this.image == "" || this.type == "" || this.price <= 0) {
@@ -28,10 +28,18 @@ export class AddService {
       name: this.name,
       description: this.desc,
       type: this.type,
-      sale: this.sale,
       price: this.price,
       image_path: this.image
     });
+
+    await this.supabaseService.load_services();
+    const ser = this.supabaseService.services().findLast(x => true);
+
+    if (this.sales.length != 0) {
+      for (var sale of this.sales) {
+        this.supabaseService.appendTableData("sales", "services", sale, ser.id);
+      }
+    }
 
     this.supabaseService.load_services();
     alert("Done!");

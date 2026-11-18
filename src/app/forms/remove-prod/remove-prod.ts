@@ -26,6 +26,7 @@ export class RemoveProd {
   async send_request() {
     console.warn(this.selected_prod);
     this.supabaseService.deleteTableData("products", this.selected_prod);
+    this.supabaseService.removeTableDataFromArray("sales", "products", this.selected_prod);
 
     await this.supabaseService.load_products();
     this.type_changed();

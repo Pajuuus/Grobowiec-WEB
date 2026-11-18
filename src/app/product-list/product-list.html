@@ -12,34 +12,76 @@
         <br>
       @if ('znicz' == daneService.search_prompt()){
         <h3>Wkład znicza</h3>
-        <label><input type="checkbox"> oleisty</label>
-        <label><input type="checkbox"> parafinowy</label>
-        <label><input type="checkbox"> elektryczny</label>
-        <label><input type="checkbox"> solarny</label>
+        <label><input type="checkbox" (change)="filterAdd(1)"> oleisty</label>
+        <label><input type="checkbox" (change)="filterAdd(2)"> parafinowy</label>
+        <label><input type="checkbox" (change)="filterAdd(3)"> elektryczny</label>
+        <label><input type="checkbox" (change)="filterAdd(4)"> solarny</label>
         <br>
+
         <h3>Czas do wypalenia</h3>
-        <label><input type="checkbox"> krótki 48h</label>
-        <label><input type="checkbox"> długi 72h</label>
-        <label><input type="checkbox"> całoroczny</label>
-        <label><input type="checkbox"> wielorazowy</label>
+        <label><input type="checkbox" (change)="filterAdd(5)"> krótki 48h</label>
+        <label><input type="checkbox" (change)="filterAdd(6)"> długi 72h</label>
+        <label><input type="checkbox" (change)="filterAdd(7)"> całoroczny</label>
+        <label><input type="checkbox" (change)="filterAdd(8)"> wielorazowy</label>
         <br>
+
         <h3>Rozmiar</h3>
-        <label><input type="checkbox"> XS</label>
-        <label><input type="checkbox"> S</label>
-        <label><input type="checkbox"> M</label>
-        <label><input type="checkbox"> L</label>
-        <label><input type="checkbox"> XL</label>
-        <label><input type="checkbox"> XXL</label>
-        <label><input type="checkbox"> 3XL</label>
+        <label><input type="checkbox" (change)="filterAdd(9)"> XS</label>
+        <label><input type="checkbox" (change)="filterAdd(10)"> S</label>
+        <label><input type="checkbox" (change)="filterAdd(11)"> M</label>
+        <label><input type="checkbox" (change)="filterAdd(12)"> L</label>
+        <label><input type="checkbox" (change)="filterAdd(13)"> XL</label>
+        <label><input type="checkbox" (change)="filterAdd(14)"> XXL</label>
+        <label><input type="checkbox" (change)="filterAdd(15)"> 3XL</label>
         <br>
+
         <h3>Materiał</h3>
-        <label><input type="checkbox"> szklany</label>
-        <label><input type="checkbox"> plastikowy</label>
-        <label><input type="checkbox"> ceramiczny</label>
-        <label><input type="checkbox"> metalowy</label>
-        <label><input type="checkbox"> kamienny</label>
+        <label><input type="checkbox" (change)="filterAdd(16)"> szklany</label>
+        <label><input type="checkbox" (change)="filterAdd(17)"> plastikowy</label>
+        <label><input type="checkbox" (change)="filterAdd(18)"> ceramiczny</label>
+        <label><input type="checkbox" (change)="filterAdd(19)"> metalowy</label>
+        <label><input type="checkbox" (change)="filterAdd(20)"> kamienny</label>
         }
 
+        @if('trumna' == daneService.search_prompt()){
+          <h3>Rodzaj trumny</h3>
+            <label><input type="checkbox" (change)="filterAdd(36)"> polski</label>
+            <label><input type="checkbox" (change)="filterAdd(37)"> amerykański (beznadziejny)</label>
+            <label><input type="checkbox" (change)="filterAdd(35)"> włoski</label>
+            <label><input type="checkbox" (change)="filterAdd(38)"> rzeźbiony</label>
+          <br>
+
+          <h3>Rozmiar</h3>
+          <label><input type="checkbox" (change)="filterAdd(9)"> XS</label>
+          <label><input type="checkbox" (change)="filterAdd(10)"> S</label>
+          <label><input type="checkbox" (change)="filterAdd(11)"> M</label>
+          <label><input type="checkbox" (change)="filterAdd(12)"> L</label>
+          <label><input type="checkbox" (change)="filterAdd(13)"> XL</label>
+          <label><input type="checkbox" (change)="filterAdd(14)"> XXL</label>
+          <label><input type="checkbox" (change)="filterAdd(15)"> 3XL</label>
+          <br>
+
+          <h3>Materiał</h3>
+          <label><input type="checkbox" (change)="filterAdd(26)"> sosnowy</label>
+          <label><input type="checkbox" (change)="filterAdd(27)"> dębowy</label>
+          <label><input type="checkbox" (change)="filterAdd(28)"> olchowy</label>
+          <label><input type="checkbox" (change)="filterAdd(29)"> brzozowy</label>
+          <label><input type="checkbox" (change)="filterAdd(30)"> machoniowy</label>
+          <label><input type="checkbox" (change)="filterAdd(31)"> orzechowy</label>
+          <label><input type="checkbox" (change)="filterAdd(32)"> palesandrowy</label>
+          <label><input type="checkbox" (change)="filterAdd(33)"> kokobolo</label>
+          <label><input type="checkbox" (change)="filterAdd(34)"> kartonowe (eko)</label>
+          <br>
+
+          <h3>Wybicie</h3>
+          <label><input type="checkbox" (change)="filterAdd(44)"> folia bąbelkowa</label>
+          <label><input type="checkbox" (change)="filterAdd(41)"> bawełna</label>
+          <label><input type="checkbox" (change)="filterAdd(40)"> atłas</label>
+          <label><input type="checkbox" (change)="filterAdd(39)"> satyna</label>
+          <label><input type="checkbox" (change)="filterAdd(42)"> len</label>
+          <label><input type="checkbox" (change)="filterAdd(43)"> welur</label>
+
+        }
       </nav>
     </header>
 
@@ -61,21 +103,23 @@
     </header>
     @for (product of products(); track product.id) {
       @if (product.type == daneService.search_prompt() && product.price >= minPrice && product.price <= maxPrice){
-        <div class="product">
-          <img src="{{product.image}}">
-          <div class="left">
-            <h3>{{product.name}}</h3>
-            @for (property of product.properties; track property) {
-              <p>{{property}}</p>
-            }
-          </div>
+        @if(filtering(product.properties)){
+          <div class="product">
+            <img src="{{product.image}}">
+            <div class="left">
+              <h3>{{product.name}}</h3>
+              @for (property of product.properties; track property) {
+                <p>{{property}}</p>
+              }
+            </div>
 
-          <div class="right">
-            <h3>{{product.price}}</h3>
-            <button><img src="/images/images.jpeg"></button>
-            <p>{{product.in_stock}}</p>
+            <div class="right">
+              <h3>{{product.price}}</h3>
+              <button><img src="/images/images.jpeg"></button>
+              <p>{{product.in_stock}}</p>
+            </div>
           </div>
-        </div>
+        }
     }
   }
   </article>

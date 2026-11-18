@@ -42,13 +42,20 @@ button {
 }
 
 @media screen and (max-width: 400px) {
-  nav {
-    flex-direction: column;
-    margin-top: -45px;
-  }
+    * {
+        padding: 0;
+    }
 
-  #left_edge, #right_edge {
-    padding: 0;
-    border-radius: 0;
-  }
+    nav {
+        flex-direction: column;
+        margin-top: -50px;
+    }
+
+    #left_edge {
+        border-radius: 5px 5px 0 0;
+    }
+
+    #right_edge {
+        border-radius: 0 0 5px 5px;
+    }
 }

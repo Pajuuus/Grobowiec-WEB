@@ -8,8 +8,9 @@
   font-family: "JetBrainsMono-Regular";
 }
 
-button {
+button, input {
   transition: all 0.4s ease;
+  rotate: -0.25deg;
 }
 
 button:hover {
