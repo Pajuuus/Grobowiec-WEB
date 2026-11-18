@@ -2,6 +2,13 @@ main {
   display: none;
 }
 
+.x {
+  content: url('/images/light-theme/x_brazowy.png');
+  border: none;
+  background: none;
+  rotate: -5deg;
+}
+
 main.active {
   display: block;
   background: #f2e3a6;
@@ -42,5 +49,9 @@ nav h3{
 * {
   background-color: black;
   color: #D400FF;
+  border-color: #D400FF;
+}
+.x {
+  content: url('/images/dark-theme/x_borowkowy.png');
 }
 }
