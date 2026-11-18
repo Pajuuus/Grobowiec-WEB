@@ -1,0 +1,15 @@
+<div>
+    <img id="img" [src]="selected().image_path">
+    <div id="ddiv">
+        <h1 id="p">{{ selected().name }}</h1>
+    </div>
+
+    <div id="div">
+        @for (prod of selected().products; track prod) {
+            <div>
+                <img class="img" [src]="product(prod).image">
+                <p>{{ product(prod).name }}</p>
+            </div>
+        }
+    </div>
+</div>

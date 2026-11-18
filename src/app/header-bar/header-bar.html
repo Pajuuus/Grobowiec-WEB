@@ -9,7 +9,7 @@
     <div id="bottom">
       @if (CategoryView == 1){
         @for (sale of supabaseService.sales(); track sale.id) {
-            <p>{{ sale.name }}</p>
+            <p (click)="selected_sale(sale.id)">{{ sale.name }}</p>
         }
       }
 
