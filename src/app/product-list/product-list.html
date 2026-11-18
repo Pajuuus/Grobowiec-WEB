@@ -52,13 +52,13 @@
           <br>
 
           <h3>Rozmiar</h3>
-          <label><input type="checkbox" (change)="filterAdd(9)"> XS</label>
-          <label><input type="checkbox" (change)="filterAdd(10)"> S</label>
-          <label><input type="checkbox" (change)="filterAdd(11)"> M</label>
-          <label><input type="checkbox" (change)="filterAdd(12)"> L</label>
-          <label><input type="checkbox" (change)="filterAdd(13)"> XL</label>
-          <label><input type="checkbox" (change)="filterAdd(14)"> XXL</label>
-          <label><input type="checkbox" (change)="filterAdd(15)"> 3XL</label>
+          <label><input type="checkbox" (change)="filterAdd(45)"> XS</label>
+          <label><input type="checkbox" (change)="filterAdd(46)"> S</label>
+          <label><input type="checkbox" (change)="filterAdd(47)"> M</label>
+          <label><input type="checkbox" (change)="filterAdd(48)"> L</label>
+          <label><input type="checkbox" (change)="filterAdd(49)"> XL</label>
+          <label><input type="checkbox" (change)="filterAdd(50)"> XXL</label>
+          <label><input type="checkbox" (change)="filterAdd(51)"> 3XL</label>
           <br>
 
           <h3>Materiał</h3>
@@ -80,7 +80,86 @@
           <label><input type="checkbox" (change)="filterAdd(39)"> satyna</label>
           <label><input type="checkbox" (change)="filterAdd(42)"> len</label>
           <label><input type="checkbox" (change)="filterAdd(43)"> welur</label>
+          <br>
 
+        }
+        @if('kwiaty' == daneService.search_prompt()){
+          <h3>Rodzaj kwiatów</h3>
+          <label><input type="checkbox" (change)="filterAdd(52)"> sztuczne</label>
+          <label><input type="checkbox" (change)="filterAdd(53)"> żywe, cięte</label>
+          <label><input type="checkbox" (change)="filterAdd(54)"> żywe doniczkowe</label>
+          <label><input type="checkbox" (change)="filterAdd(55)"> suszone</label>
+          <br>
+
+          <h3>Gatunki kwiatów</h3>
+          <label><input type="checkbox" (change)="filterAdd(56)"> chryzantemy</label>
+          <label><input type="checkbox" (change)="filterAdd(57)"> róże</label>
+          <label><input type="checkbox" (change)="filterAdd(58)"> lilie</label>
+          <label><input type="checkbox" (change)="filterAdd(59)"> kalie</label>
+          <label><input type="checkbox" (change)="filterAdd(60)"> goździki</label>
+          <label><input type="checkbox" (change)="filterAdd(61)"> storczyki</label>
+          <label><input type="checkbox" (change)="filterAdd(62)"> mleczyki</label>
+          <label><input type="checkbox" (change)="filterAdd(63)"> mieczyki</label>
+          <label><input type="checkbox" (change)="filterAdd(64)"> gerbery</label>
+          <label><input type="checkbox" (change)="filterAdd(65)"> hortensje</label>
+          <label><input type="checkbox" (change)="filterAdd(66)"> wrzosy</label>
+          <label><input type="checkbox" (change)="filterAdd(67)"> zieleń iglasta</label>
+          <label><input type="checkbox" (change)="filterAdd(68)"> czarnuszka</label>
+          <label><input type="checkbox" (change)="filterAdd(69)"> maki</label>
+          <label><input type="checkbox" (change)="filterAdd(70)"> słoneczniki</label>
+          <br>
+
+          <h3>Rozmiar</h3>
+          <label><input type="checkbox" (change)="filterAdd(71)"> XS</label>
+          <label><input type="checkbox" (change)="filterAdd(72)"> S</label>
+          <label><input type="checkbox" (change)="filterAdd(73)"> M</label>
+          <label><input type="checkbox" (change)="filterAdd(74)"> L</label>
+          <label><input type="checkbox" (change)="filterAdd(75)"> XL</label>
+          <label><input type="checkbox" (change)="filterAdd(76)"> XXL</label>
+          <label><input type="checkbox" (change)="filterAdd(77)"> 3XL</label>
+          <br>
+        }
+
+        @if('nagrobek' == daneService.search_prompt()){
+          <h3>Rozmiar</h3>
+          <label><input type="checkbox" (change)="filterAdd(21)"> dziedzięcy</label>
+          <label><input type="checkbox" (change)="filterAdd(23)"> pojedyńczy</label>
+          <label><input type="checkbox" (change)="filterAdd(24)"> podwójny</label>
+          <label><input type="checkbox" (change)="filterAdd(25)"> rodzinny</label>
+          <label><input type="checkbox" (change)="filterAdd(78)"> grobowiec</label>
+          <br>
+
+          <h3>Styl</h3>
+          <label><input type="checkbox" (change)="filterAdd(97)"> tradycyjny</label>
+          <label><input type="checkbox" (change)="filterAdd(98)"> nowoczesny</label>
+          <label><input type="checkbox" (change)="filterAdd(99)"> minimalistyczny</label>
+          <br>
+
+          <h3>Materiał</h3>
+          <label><input type="checkbox" (change)="filterAdd(79)"> granit</label>
+          <label><input type="checkbox" (change)="filterAdd(80)"> marmur</label>
+          <label><input type="checkbox" (change)="filterAdd(81)"> piaskowiec</label>
+          <label><input type="checkbox" (change)="filterAdd(82)"> bazalt</label>
+          <label><input type="checkbox" (change)="filterAdd(83)"> sjenit</label>
+          <label><input type="checkbox" (change)="filterAdd(84)"> lastryko</label>
+          <label><input type="checkbox" (change)="filterAdd(85)"> korten</label>
+          <br>
+
+          <h3>Barwa materiału</h3>
+          <label><input type="checkbox" (change)="filterAdd(86)"> czarna</label>
+          <label><input type="checkbox" (change)="filterAdd(87)"> szara</label>
+          <label><input type="checkbox" (change)="filterAdd(88)"> biała</label>
+          <label><input type="checkbox" (change)="filterAdd(89)"> brązowa</label>
+          <label><input type="checkbox" (change)="filterAdd(90)"> czerwona</label>
+          <label><input type="checkbox" (change)="filterAdd(91)"> zielona</label>
+          <label><input type="checkbox" (change)="filterAdd(92)"> niebieska</label>
+          <br>
+
+          <h3>Wykończenie</h3>
+          <label><input type="checkbox" (change)="filterAdd(93)"> polerowanie</label>
+          <label><input type="checkbox" (change)="filterAdd(94)"> płomieniowanie</label>
+          <label><input type="checkbox" (change)="filterAdd(95)"> szczotkowanie</label>
+          <label><input type="checkbox" (change)="filterAdd(96)"> łupanie (w kościach)</label>
         }
       </nav>
     </header>
