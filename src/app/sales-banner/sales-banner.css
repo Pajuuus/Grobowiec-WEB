@@ -41,7 +41,7 @@ button {
   filter: brightness(0.9);
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 470px) {
     * {
         padding: 0;
     }

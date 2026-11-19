@@ -30,3 +30,18 @@ img {
     display: flex;
     justify-content: center;
 }
+
+b {
+    color: red;
+    animation: sale 1s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes sale {
+    from {
+        font-size: auto;
+    }
+
+    to {
+        font-size: 2em;
+    }
+}
