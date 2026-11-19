@@ -23,9 +23,11 @@ export class User {
 
     const user = await this.supabaseService.load_user(Number(phone), String(password));
 
-    this.inner.set(user);
-    this.cart.set(user.cart);
-    this.logged_in.set(true);
+    if (user) {
+      this.inner.set(user);
+      this.cart.set(user.cart);
+      this.logged_in.set(true);
+    }
   }
 
   public log_in(user: any) {

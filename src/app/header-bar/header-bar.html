@@ -31,8 +31,12 @@
     <button type="submit"><img class="search"></button>
   </form>
   <button class="OtherChangeButtons user" [class.active]="OtherView == 2" (click)="otherChange(2); asideBar()" id="buildButton">
-      <img id="img" src="/images/light-theme/user_brazowy.png">
+    @if (user.logged_in()) {
+      <img class="img logged" src="/images/light-theme/user_brazowy.png">
       <a id="pp">{{ user.inner().points }} Punktow!</a>
+    } @else {
+      <img class="img regist" src="/images/light-theme/zarejestruj_brazowy.png">
+    }
   </button>
   <div id="usefullButtons">
     <button id="cartButton" class="cart" [class.active]="OtherView == 3" (click)="search('cart'); otherChange(3)"><img class="cart" [class.active]="OtherView == 3"></button>

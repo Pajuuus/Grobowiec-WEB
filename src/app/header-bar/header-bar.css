@@ -22,8 +22,11 @@ img {
   content: url('/images/light-theme/lista_bezowa.png');
   background-color: #704214;
 }
-.user.active img {
+.user.active .logged {
     content: url("/images/light-theme/user_bezowy.png");
+}
+.user.active .regist {
+    filter: brightness(275%) hue-rotate(-10deg);
 }
 
 * {
@@ -356,7 +359,7 @@ p:hover {
     }
 }
 
-#img {
+.img {
     width: 50%;
 }
 
