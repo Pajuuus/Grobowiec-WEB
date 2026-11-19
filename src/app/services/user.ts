@@ -7,12 +7,40 @@ import { SupabaseService } from './supabase';
 export class User {
   supabaseService = inject(SupabaseService);
 
-  password = signal("");
-  phone = signal(0);
-  username = signal("");
-  points = signal(0);
-  cart = signal<number[]>([]);
+  logged_in = signal(false);
+  inner = signal<any>({});
+
+  cart = signal<any>({});
   priceOfCart = signal(0);
+
+  constructor() {
+    this.try_from_storage();
+
+    this.cart.set(this.inner().cart);
+  }
+
+  public async try_from_storage() {
+    const phone = localStorage.getItem("phone");
+    const password = localStorage.getItem("pass");
+
+    const user = await this.supabaseService.load_user(Number(phone), String(password));
+
+    this.inner.set(user);
+    this.logged_in.set(true);
+  }
+
+  public log_in(user: any) {
+    this.inner.set(user);
+    this.logged_in.set(true);
+  }
+
+  public log_out() {
+    this.inner.set({});
+    this.logged_in.set(false);
+
+    localStorage.removeItem("phone");
+    localStorage.removeItem("pass");
+  }
 
   AddProduct(x: number) {
     this.cart().push(x);
@@ -28,5 +56,5 @@ export class User {
       }
     }
     this.cart.set([...this.cart()].sort((a, b) => a - b));
-  }
+}
 }

@@ -30,7 +30,10 @@
     <input class="OtherChangeButtons" [class.active]="OtherView == 1" (click)="otherChange(1)" name="Wyszukiwanie" type="text" placeholder=" Wyszukaj produkt">
     <button type="submit"><img class="search"></button>
   </form>
-  <button class="OtherChangeButtons" [class.active]="OtherView == 2" (click)="otherChange(2); asideBar()" id="buildButton">Złóż swój własny pogrzeb!</button>
+  <button class="OtherChangeButtons user" [class.active]="OtherView == 2" (click)="otherChange(2); asideBar()" id="buildButton">
+      <img id="img" src="/images/light-theme/user_brazowy.png">
+      <a id="pp">{{ user.inner().points }} Punktow!</a>
+  </button>
   <div id="usefullButtons">
     <button id="cartButton" class="cart" [class.active]="OtherView == 3" (click)="search('cart'); otherChange(3)"><img class="cart" [class.active]="OtherView == 3"></button>
     <button id="wishList" class="wish" [class.active]="OtherView == 4" (click)="search('wish'); otherChange(4)"><img class="wish" [class.active]="OtherView == 4"></button>

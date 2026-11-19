@@ -1,4 +1,4 @@
-import { Component, Inject, inject } from '@angular/core';
+import { Component, Inject, inject, signal } from '@angular/core';
 import { DaneService } from '../services/dane';
 import { User } from '../services/user';
 import { SupabaseService } from '../services/supabase';
@@ -11,26 +11,21 @@ import { SupabaseService } from '../services/supabase';
 })
 export class AsideBar {
   public daneService = inject(DaneService);
-  private user = inject(User);
+  private userService = inject(User);
+  private user = inject(User).inner;
   private supabaseService = inject(SupabaseService);
 
   register = false;
 
-  RegisterView() {
-    if (this.register) {
-      this.register = false;
-    } else {
-      this.register = true;
-    }
-  }
-
-  async Register(phone: any, username: string, name: string, surname: string, password: string) {
+  async Register(phone: string, username: string, name: string, surname: string, password: string) {
     if (!/[A-ZĄĆĘŁŃÓŚŹŻ]/.test(password)) { alert("Twoje hasło musi zawierać przynajmniej jedną dużą literę"); return;  }
-    if (!/[!?@#$]/.test(password)) { alert("Twoje hasło musi zawierać przynajmniej jeden znak specjalny"); return;  }
+    if (!/[\x21-\x2f]/.test(password)) { alert("Twoje hasło musi zawierać przynajmniej jeden znak specjalny"); return;  }
     if (/012|123|234|345|456|567|678|789/.test(password)) { alert("Twoje hasło nie może zawierać ciągu trzech cyfr po kolei np. 123"); return;  }
     if (password.length <= 14) { alert("Twoje hasło jest za krótkie"); return; }
 
-    if (String(phone).length == 9) {
+    var msg = "Something went wrong";
+
+    if (String(phone).length == 9 && phone) {
       try {
         await this.supabaseService.insertTableData("users", {
           phone: phone,
@@ -40,13 +35,15 @@ export class AsideBar {
           password: password
         });
 
-        alert("Super! Nasza baza danych powiedziała nam, że wszystko git i jesteś naszym nowych użytkownikiem! Także użytkowniku, witamy w grobowcu!");
+        msg = "Super! Nasza baza danych powiedziała nam, że wszystko git i jesteś naszym nowych użytkownikiem! Także użytkowniku, witamy w grobowcu!";
       } catch (error) {
-        alert("Twój numer telefonu jest już zajęty");
+        msg = "Twój numer telefonu jest już zajęty";
       }
     } else {
-      alert("Twój numer telefonu nie istnieje");
+      msg = "Twój numer telefonu nie istnieje";
     }
+
+    alert(msg);
   }
 
   Close(x: boolean) {
@@ -54,18 +51,32 @@ export class AsideBar {
   }
 
   async Login(phone: any, password: any) {
-    const dbuser = await this.supabaseService.load_user(phone, password);
-    this.user.phone.set(phone);
-    this.user.username.set(dbuser.username);
-    this.user.points.set(dbuser.points);
-    this.user.password.set(password);
+    if (phone.length != 9 || !/^\d+$/.test(phone)) {
+      alert("Incorrect phone number");
+      return;
+    } else if (password.length == 0) {
+      alert("Password cannot be empty");
+      return;
+    }
+
+    try {
+      const dbuser = await this.supabaseService.load_user(phone, password);
+      this.userService.log_in(dbuser)
+
+      localStorage.setItem("phone", phone);
+      localStorage.setItem("pass", password);
+
+      alert("Succesfully logged in!");
+    } catch (error) {
+      alert("Something went wrong");
+    }
   }
 
   unlogin() {
     if (window.confirm("Czy na pewno chcesz się wylogować? Gorące oferty zniczy i trumien czekają w twojej okolicy!")) {
       window.alert("Do zobaczenia przy następnym pogrzebie! ;D");
-      this.user.username.set("");
-      this.user.points.set(0);
+
+      this.userService.log_out();
     } else {
       window.alert("Cieszymy się że z nami zostałeś. Zapraszamy na dział custom pogrzeb! :D");
     }
@@ -131,11 +142,9 @@ export class AsideBar {
       }
     }
 
-    this.supabaseService.delete_user(this.user.phone(), this.user.password());
-    this.user.phone.set(0);
-    this.user.username.set("");
-    this.user.points.set(0);
-    this.user.password.set("");
+    this.supabaseService.delete_user(this.user().phone, this.user().password);
+    this.userService.log_out();
+
     alert("Þóµ←śłń→ę ↓ś↓ńęł→śµ← ßœóəę …óńßó")
   }
 }

@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SupabaseService } from '../services/supabase';
 import { DaneService } from '../services/dane';
+import { User } from '../services/user';
 
 @Component({
   selector: 'header-bar',
@@ -12,6 +13,7 @@ import { DaneService } from '../services/dane';
 export class HeaderBar {
   private supabaseService = inject(SupabaseService);
   private daneService = inject(DaneService);
+  private user = inject(User);
 
   CategoryView = 1;
   OtherView = 0;
