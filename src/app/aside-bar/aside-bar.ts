@@ -39,6 +39,8 @@ export class AsideBar {
           surname: surname,
           password: password
         });
+
+        alert("Super! Nasza baza danych powiedziała nam, że wszystko git i jesteś naszym nowych użytkownikiem! Także użytkowniku, witamy w grobowcu!");
       } catch (error) {
         alert("Twój numer telefonu jest już zajęty");
       }
