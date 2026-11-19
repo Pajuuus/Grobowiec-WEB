@@ -5,9 +5,11 @@ import { ProductList } from '../product-list/product-list';
 import { DaneService } from '../services/dane';
 import { SaleList } from '../sale-list/sale-list';
 import { ProductViewer } from '../product-viewer/product-viewer';
+import { Cart } from '../cart/cart';
+import { WishList } from '../wish-list/wish-list';
 
 @Component({
-  imports: [SalesBanner, ProductList, FormSelector, SaleList, ProductViewer],
+  imports: [SalesBanner, ProductList, FormSelector, SaleList, ProductViewer, Cart, WishList],
   selector: 'main-main',
   styleUrl: './main-main.css',
   templateUrl: './main-main.html',

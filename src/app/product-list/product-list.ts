@@ -2,6 +2,8 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { SupabaseService } from '../services/supabase';
 import { DaneService } from '../services/dane';
 import { FormsModule } from '@angular/forms';
+import { User } from '../services/user';
+import { Cart } from '../cart/cart';
 
 @Component({
   imports: [FormsModule],
@@ -12,12 +14,12 @@ import { FormsModule } from '@angular/forms';
 export class ProductList {
   private supabaseService = inject(SupabaseService);
   private daneService = inject(DaneService);
+  private user = inject(User);
 
   products = this.supabaseService.products;
   sortType = 'random';
   minPrice = 0;
   maxPrice = 999999.99;
-
 
   setPriceFilter(min: any, max: any) {
     this.minPrice = 0;

@@ -1,1 +1,15 @@
-<p>cart works!</p>
+<main>
+  <aside>
+    @for (productId of user.cart(); track productId) {
+      @for (product of supabaseService.products(); track product.id) {
+        @if (product.id == productId){
+          <div>{{product.name}}</div>
+        }
+      }
+    }
+  </aside>
+  <article>
+
+    <p>{{ user.priceOfCart() }}</p>
+  </article>
+</main>
