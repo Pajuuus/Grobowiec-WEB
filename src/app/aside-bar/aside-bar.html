@@ -2,37 +2,56 @@
   <button class="x" (click)="Close(false)"><img class="x"></button>
 
   <nav>
-    @if(user.username() == ""){
-      <h1>Logowanie</h1>
-      <label>Telefon</label>
-      <input type="number" #tel placeholder="100 200 300">
-      <label>Hasło</label>
-      <input type="password" #pas placeholder="Twoje hasełko"> <br>
-      <button (click)="Login(tel.value, pas.value)">zaloguj</button> <br>
-      <h3>Nie masz konta? Załóz już dziś i odkryj pełnię możliwości!</h3>
-      <button (click)="RegisterView()">Zarejestruj</button>
+    @if (!userService.logged_in()) {
+      @if (register) {
+        <h1>Tworzenie konta</h1>
 
-      @if(register){
-      <h1 id="h1">Tworzenie konta</h1>
-      <label>Numer Telefonu</label>
-      <input #phone type="number" placeholder="600 100 100">
-      <label>Przydomek</label>
-      <input #username type="text" placeholder="Teppichfresser">
-      <label>Imię</label>
-      <input #name type="text" placeholder="Włodzimież">
-      <label>Nazwisko</label>
-      <input #surname type="text" placeholder="Epstein">
-      <label>Hasło</label>
-      <input #password type="password" placeholder="1234"> <br>
-      <button (click)="Register(phone.value, username.value, name.value, surname.value, password.value)">huj</button>
-      }
+        <label>Numer Telefonu</label>
+        <input #phone type="number" placeholder="600 100 100">
+
+        <label>Przydomek</label>
+        <input #username type="text" placeholder="Teppichfresser">
+
+        <label>Imię</label>
+        <input #name type="text" placeholder="Włodzimież">
+
+        <label>Nazwisko</label>
+        <input #surname type="text" placeholder="Epstein">
+
+        <label>Hasło</label>
+        <input #password type="password" placeholder="1234"> <br>
+
+        <button (click)="Register(phone.value, username.value, name.value, surname.value, password.value)">Register</button>
+
+        <h3 id="baton">Masz juz konto? Zaloguj sie!</h3>
+        <button (click)="register = !register">Zaloguj</button>
+      } @else {
+        <h1>Logowanie</h1>
+
+        <label>Telefon</label>
+        <input type="number" inputmode="numeric" #tel placeholder="100 200 300">
+
+        <label>Hasło</label>
+        <input type="password" #pas placeholder="Twoje hasełko"> <br>
+
+        <button (click)="Login(tel.value, pas.value)">zaloguj</button> <br>
+
+        <h3 id="baton">Nie masz konta? Załóz już dziś i odkryj pełnię możliwości!</h3>
+        <button (click)="register = !register">Zarejestruj</button>
+        }
+    } @else {
+        <h1>Ustawienia konta</h1>
+        <p>W budowie, na razie możesz se coś kupić</p>
+        <button (click)="unlogin()">Wyloguj</button>
+        <button (click)="DeleteUser()">Usuń konto</button>
+
+        @if (user().privileges > 0) {
+            <h2 id="baton">Your account has admin privileges!</h2>
+            <h4>-----Admin stuff here-----</h4>
+
+            <label id="baton" for="forms">Database forms</label>
+            <button name="forms" (click)="daneService.search_prompt.set('formulaz')">forms here</button>
+        }
     }
-
-  @if(user.username() != ""){
-    <h1>Ustawienia konta</h1>
-    <p>W budowie, na razie możesz se coś kupić</p>
-    <button (click)="unlogin()">Wyloguj</button>
-    <button (click)="DeleteUser()">Usuń konto</button>
-  }
 </nav>
 </main>

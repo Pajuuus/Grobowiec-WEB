@@ -33,7 +33,7 @@ export class SalesBanner implements OnInit {
     if (sale) {
       this.change_sale(sale.id);
     } else {
-      this.change_sale(0);
+      this.change_sale(this.supabaseService.sales().find(x => true).id);
     }
   }
 

@@ -40,18 +40,17 @@ nav h3{
   font-size: 50%;
 }
 
-#h1{
-  margin-top: 25px;
+#baton {
+    margin-top: 30px;
 }
-
 
 @media screen and (prefers-color-scheme: dark){
-* {
-  background-color: black;
-  color: #D400FF;
-  border-color: #D400FF;
-}
-.x {
-  content: url('/images/dark-theme/x_borowkowy.png');
-}
+    * {
+      background-color: black;
+      color: #D400FF;
+      border-color: #D400FF;
+    }
+    .x {
+      content: url('/images/dark-theme/x_borowkowy.png');
+    }
 }

@@ -6,10 +6,10 @@
 
     <div id="div">
         @for (prod of selected().products; track prod) {
-            <div (click)="clicked(prod)">
+            <div id="div" (click)="clicked(prod)">
                 <img class="img" [src]="product(prod).image">
                 <p>{{ product(prod).name }}</p>
-                <p><s>{{ product(prod).price }} zł</s><b>{{ (product(prod).price * selected().how_much).toFixed(2) }} zł</b></p>
+                <p><s>{{ product(prod).price }} zł</s><b> {{ (product(prod).price * selected().how_much).toFixed(2) }} zł</b></p>
             </div>
         }
     </div>

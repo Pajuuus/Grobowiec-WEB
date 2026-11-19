@@ -22,6 +22,10 @@ img {
   content: url('/images/light-theme/lista_bezowa.png');
   background-color: #704214;
 }
+.user.active img {
+    content: url("/images/light-theme/user_bezowy.png");
+}
+
 * {
   margin: 0px;
   margin-top: auto;
@@ -144,11 +148,15 @@ p:hover {
   .categoryChangeButtons {
     width: 230px;
   }
-@media screen and (max-width: 715px){
+}
+@media screen and (max-width: 715px) {
   .categoryChangeButtons {
     width: 200px;
   }
-}
+
+  #pp {
+      display: none;
+  }
 }
 @media screen and (max-width: 666px) {
   #logo {
@@ -326,24 +334,38 @@ p:hover {
       }
   }
 
+@keyframes animation2 {
+    from {
+        color: #D400FF;
+        font-size: 100%;
+    }
+    to {
+        color: yellow;
+        font-size: 130%;
+    }
+}
 
-  @keyframes animation2 {
+@keyframes animation1 {
     from {
-      color: #D400FF;
-      font-size: 100%;
+        color: #704214;
+        font-size: 100%;
     }
     to {
-      color: yellow;
-      font-size: 130%;
+        color: #FF1DCE;
+        font-size: 130%;
     }
-  }
-  @keyframes animation1 {
-    from {
-      color: #704214;
-      font-size: 100%;
-    }
-    to {
-      color: #FF1DCE;
-      font-size: 130%;
-    }
-  }
+}
+
+#img {
+    width: 50%;
+}
+
+.user {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+#pp {
+    width: fit-content;
+}
