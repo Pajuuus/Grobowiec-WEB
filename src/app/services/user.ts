@@ -10,13 +10,11 @@ export class User {
   logged_in = signal(false);
   inner = signal<any>({});
 
-  cart = signal<any>({});
+  cart = signal<number[]>([]);
   priceOfCart = signal(0);
 
   constructor() {
     this.try_from_storage();
-
-    this.cart.set(this.inner().cart);
   }
 
   public async try_from_storage() {
@@ -26,6 +24,7 @@ export class User {
     const user = await this.supabaseService.load_user(Number(phone), String(password));
 
     this.inner.set(user);
+    this.cart.set(user.cart);
     this.logged_in.set(true);
   }
 
@@ -43,18 +42,16 @@ export class User {
   }
 
   AddProduct(x: number) {
-    this.cart().push(x);
+    this.cart.update(y => [...y, x]);
     this.PriceOfProductsAdd();
   }
 
   PriceOfProductsAdd() {
-    for (var x of this.cart()) {
-      for (var y of this.supabaseService.products()) {
-        if (y.id == x) {
-          this.priceOfCart.set(this.priceOfCart() + y.price);
-        }
-      }
+    for (var id of this.cart()) {
+      const prod = this.supabaseService.products().find(x => x.id == id);
+      this.priceOfCart.update(x => x + prod.price);
     }
-    this.cart.set([...this.cart()].sort((a, b) => a - b));
-}
+
+    this.cart.update(x => x.sort((a, b) => a - b));
+  }
 }
