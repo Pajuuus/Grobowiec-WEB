@@ -42,4 +42,8 @@ export class HeaderBar {
     this.daneService.selected_sale.set(x);
     this.search("sale-list")
   }
+
+  wyjeb() {
+    alert('Something went wong');
+  }
 }

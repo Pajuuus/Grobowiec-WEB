@@ -21,7 +21,7 @@
 
       @if (CategoryView == 3){
         @for (type of supabaseService.ser_type_enum; track type) {
-            <p>{{ type }}</p>
+            <p (click)="wyjeb()">{{ type }}</p>
         }
       }
     </div>
