@@ -1,0 +1,45 @@
+@media screen and (prefers-color-scheme: light){
+.site-footer {
+  background-color: #704214;
+  color: #f5eabc;
+  padding: 48px 10%;
+}
+}
+@media screen and (prefers-color-scheme: dark){
+.site-footer {
+  background-color: black;
+  color: #D400FF;
+  padding: 48px 10%;
+}
+}
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 32px 10%;
+  align-items: start;
+}
+
+.footer-title {
+  margin: 0 0 14px;
+  font-size: 110%;
+}
+
+.footer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-list {
+  text-decoration: none;
+}
+
+.footer-list li:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
