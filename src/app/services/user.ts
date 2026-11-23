@@ -25,8 +25,14 @@ export class User {
 
     if (user) {
       this.inner.set(user);
-      this.cart.set(user.cart);
       this.logged_in.set(true);
+    }
+
+    const cart = localStorage.getItem("cart");
+
+    if (cart) {
+      this.cart.set(JSON.parse(cart));
+      this.PriceOfProductsAdd()
     }
   }
 
@@ -46,9 +52,15 @@ export class User {
   AddProduct(x: number) {
     this.cart.update(y => [...y, x]);
     this.PriceOfProductsAdd();
+
+    localStorage.setItem("cart", JSON.stringify(this.cart()));
   }
 
   PriceOfProductsAdd() {
+    if (!this.supabaseService.loading) {
+      return;
+    }
+
     for (var id of this.cart()) {
       const prod = this.supabaseService.products().find(x => x.id == id);
       this.priceOfCart.update(x => x + prod.price);

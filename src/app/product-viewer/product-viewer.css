@@ -9,6 +9,7 @@
 #two {
   display: flex;
   flex-direction: column;
+  max-width: 20%;
 }
 
 #three {
@@ -16,11 +17,15 @@
 }
 
 .five, #three, #two, #one * {
-  max-width: 40%;
   text-align: center;
 }
 
 #four {
   width: 40%;
   height: 40%;
+}
+
+button {
+    border: solid black 2px;
+    border-radius: 10px;
 }
