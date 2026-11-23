@@ -45,12 +45,29 @@ nav h3{
 }
 
 @media screen and (prefers-color-scheme: dark){
-    * {
-      background-color: black;
-      color: #D400FF;
-      border-color: #D400FF;
+    *, main {
+        background: black !important;
+        color: #D400FF;
+        border-color: #D400FF !important;
     }
+
     .x {
       content: url('/images/dark-theme/x_borowkowy.png');
+    }
+
+    button {
+        border: solid 2px cyan;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    main {
+        width: 7000% !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        width: 10000% !important;
     }
 }

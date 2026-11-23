@@ -1,6 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { DaneService } from '../services/dane';
 import { SupabaseService } from '../services/supabase';
+import { User } from '../services/user';
 
 @Component({
   imports: [],
@@ -11,6 +12,7 @@ import { SupabaseService } from '../services/supabase';
 export class ProductViewer {
   daneService = inject(DaneService);
   supabaseService = inject(SupabaseService);
+  user = inject(User);
 
   name = "";
   desc = "";

@@ -15,6 +15,4 @@ export class Cart {
   private supabaseService = inject(SupabaseService);
 
   tempId = 0;
-
-
 }

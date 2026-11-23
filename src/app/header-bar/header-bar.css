@@ -1,6 +1,7 @@
 img {
   width: 80%;
   height: 100%;
+  cursor: pointer;
 }
 .cart {
   content: url('/images/light-theme/koszyk_brazowy.png');
@@ -46,6 +47,7 @@ main {
 #logo {
   height: 100px;
   width: 10%;
+  cursor: pointer;
 }
 nav {
   width: 50%;
@@ -56,8 +58,8 @@ nav {
   justify-content: space-around;
 }
 .categoryChangeButtons {
-  width: 222px;
-  height: 40px;
+    width: 222px;
+    height: 40px;
 }
 form {
   width: 20%;
@@ -302,11 +304,10 @@ p:hover {
       }
 
       button, input {
-        border-color: #D400FF;
-        color: #D400FF;
-        background: black;
+        border-color: #D400FF !important;
+        color: #D400FF !important;
+        background: black !important;
       }
-
 
       p {
         color: #D400FF;

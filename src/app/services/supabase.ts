@@ -206,7 +206,7 @@ export class SupabaseService {
   public async load_user(phone: number, password: string) {
     const { data, error } = await this.supabase
       .from("users")
-      .select("name, surname, username, points, visited, privileges, cart, wish_list")
+      .select("name, surname, username, points, visited, privileges")
       .eq("phone", phone)
       .eq("password", password);
 
